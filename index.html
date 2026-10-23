@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Búfalas São João | Queijos Premium, Turismo e Lazer</title>
+    <title>Búfalas São João | Queijos Artesanais e Turismo Rural</title>
+    <meta name="description" content="Descubra o verdadeiro sabor do leite de búfala A2A2. Queijos artesanais premiados, doces, passeios com búfalas e turismo rural em Paraguaçu Paulista.">
     
     <!-- Fontes Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === DESIGN SYSTEM E VARIÁVEIS === */
+        /* =========================================
+           DESIGN SYSTEM E VARIÁVEIS
+           ========================================= */
         :root {
             --cor-primaria: #F2D027;
             --cor-primaria-hover: #d9b81f;
@@ -33,7 +36,7 @@
             --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.08);
             --sombra-forte: 0 20px 40px rgba(0, 0, 0, 0.12);
             
-            --transicao: all 0.3s ease;
+            --transicao: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             --borda-arredondada: 12px;
         }
 
@@ -46,6 +49,7 @@
             color: var(--cor-texto);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3, h4 { font-family: var(--fonte-titulo); color: var(--cor-texto); }
@@ -53,7 +57,9 @@
         ul { list-style: none; }
         img { max-width: 100%; display: block; }
 
-        /* === BOTÕES === */
+        /* =========================================
+           COMPONENTES (BOTÕES)
+           ========================================= */
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 14px 32px; border-radius: 50px; font-weight: 500;
@@ -62,56 +68,77 @@
         }
         .btn-primario { background-color: var(--cor-primaria); color: var(--cor-texto); }
         .btn-primario:hover { background-color: var(--cor-primaria-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(242, 208, 39, 0.3); }
+        .btn-escuro { background-color: var(--cor-texto); color: var(--cor-branco); }
+        .btn-escuro:hover { background-color: #000; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         .btn-whatsapp { background-color: var(--cor-whatsapp); color: var(--cor-branco); }
         .btn-whatsapp:hover { background-color: var(--cor-whatsapp-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
 
-        /* === HEADER === */
+        /* =========================================
+           HEADER (MENU)
+           ========================================= */
         header {
             background-color: rgba(253, 251, 247, 0.95); backdrop-filter: blur(10px);
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transicao);
         }
-        .logo { font-family: var(--fonte-titulo); font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-        .logo span { color: var(--cor-primaria); }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 60px; width: auto; }
+        
         nav { display: flex; gap: 35px; }
         nav a { font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transicao); position: relative; }
         nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--cor-primaria); transition: var(--transicao); }
         nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--cor-texto-mutado); }
         
         .carrinho-btn { position: relative; font-size: 1.4rem; cursor: pointer; transition: var(--transicao); }
         .carrinho-btn:hover { color: var(--cor-primaria); transform: scale(1.1); }
         .carrinho-contador { position: absolute; top: -8px; right: -12px; background-color: var(--cor-texto); color: var(--cor-primaria); font-size: 0.75rem; font-weight: 600; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
 
-        /* === HERO === */
+        /* =========================================
+           HERO SECTION (CAPA)
+           ========================================= */
         .hero {
-            height: 85vh; position: relative; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 0 20px;
+            height: 90vh; position: relative; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 0 20px; overflow: hidden;
         }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1590405622837-2b1a5f2c4b7a?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            /* Imagem real: Queijo na tábua */
+            background: url('queijo-fresco.jpg') center/cover no-repeat;
             z-index: -2;
         }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); z-index: -1; }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)); z-index: -1;
+        }
         .hero-conteudo { max-width: 900px; color: var(--cor-branco); }
-        .hero h1 { font-size: 5rem; color: var(--cor-branco); margin-bottom: 15px; text-shadow: 2px 4px 10px rgba(0,0,0,0.5); }
+        .hero h1 { font-size: 5rem; color: var(--cor-branco); margin-bottom: 15px; line-height: 1.1; text-shadow: 2px 4px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.3rem; font-weight: 300; margin-bottom: 35px; text-shadow: 1px 2px 5px rgba(0,0,0,0.5); }
 
-        /* === SEÇÕES === */
-        .secao { padding: 100px 5%; }
+        /* =========================================
+           SEÇÕES BASE
+           ========================================= */
+        .secao { padding: 120px 5%; }
         .fundo-alt { background-color: var(--cor-fundo-alt); }
         .container { max-width: 1200px; margin: 0 auto; }
+        
         .cabecalho-secao { text-align: center; margin-bottom: 60px; }
+        .tag-secao { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--cor-texto-mutado); margin-bottom: 10px; display: block; }
         .titulo-secao { font-size: 3rem; margin-bottom: 15px; }
         .subtitulo-secao { color: var(--cor-texto-mutado); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-        /* === GRID DUPLO === */
+        /* =========================================
+           GRID DUPLO (SOBRE / TURISMO)
+           ========================================= */
         .grid-duplo { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .texto-destaque h2 { font-size: 2.8rem; margin-bottom: 25px; }
         .texto-destaque p { font-size: 1.1rem; color: var(--cor-texto-mutado); margin-bottom: 20px; line-height: 1.8; }
         .img-destaque { width: 100%; height: 550px; object-fit: cover; border-radius: var(--borda-arredondada); box-shadow: var(--sombra-forte); }
 
-        /* === CARDS DE PRODUTOS === */
+        /* =========================================
+           CARDS DE PRODUTOS
+           ========================================= */
         .grid-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
         .card-produto {
             background: var(--cor-branco); border-radius: var(--borda-arredondada);
@@ -124,50 +151,63 @@
         .info-produto { padding: 30px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
         .info-produto h3 { font-size: 1.5rem; margin-bottom: 10px; }
         .info-produto p { color: var(--cor-texto-mutado); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
-        .preco { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+        .preco { font-size: 1.6rem; font-weight: 700; color: var(--cor-texto); margin-bottom: 20px; }
 
-        /* === INFRAESTRUTURA === */
+        /* =========================================
+           INFRAESTRUTURA
+           ========================================= */
         .grid-icones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-        .icone-card { text-align: center; padding: 40px 20px; background: var(--cor-branco); border-radius: var(--borda-arredondada); box-shadow: var(--sombra-suave); }
+        .icone-card { text-align: center; padding: 40px 20px; background: var(--cor-branco); border-radius: var(--borda-arredondada); box-shadow: var(--sombra-suave); transition: var(--transicao); }
+        .icone-card:hover { transform: translateY(-5px); box-shadow: var(--sombra-media); }
         .icone-card i { font-size: 2.5rem; color: var(--cor-primaria); margin-bottom: 20px; }
         .icone-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
         .icone-card p { font-size: 0.95rem; color: var(--cor-texto-mutado); }
 
-        /* === ACCORDION === */
+        /* =========================================
+           ACCORDION (MITOS E VERDADES)
+           ========================================= */
         .accordion { max-width: 800px; margin: 0 auto; }
         .accordion-item { background: var(--cor-branco); margin-bottom: 15px; border-radius: 8px; box-shadow: var(--sombra-suave); overflow: hidden; transition: var(--transicao); }
-        .accordion-header { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-size: 1.1rem; }
+        .accordion-header { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-size: 1.1rem; transition: var(--transicao); }
+        .accordion-header:hover { background-color: #fcfcfc; }
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 25px; color: var(--cor-texto-mutado); }
-        .accordion-item.ativo { border-left: 4px solid var(--cor-primaria); }
+        .accordion-item.ativo { box-shadow: var(--sombra-media); border-left: 4px solid var(--cor-primaria); }
         .accordion-item.ativo .accordion-content { padding: 0 25px 25px 25px; max-height: 300px; }
         .accordion-item.ativo .accordion-header i { transform: rotate(180deg); color: var(--cor-primaria); }
         .accordion-header i { transition: transform 0.4s ease; color: var(--cor-texto-mutado); }
 
-        /* === CONTATO === */
+        /* =========================================
+           CONTATO
+           ========================================= */
         .contato-info { display: flex; flex-direction: column; gap: 25px; }
         .contato-info li { display: flex; align-items: flex-start; gap: 20px; font-size: 1.05rem; }
         .contato-info i { color: var(--cor-primaria); font-size: 1.4rem; margin-top: 3px; }
         .mapa iframe { width: 100%; height: 450px; border: none; border-radius: var(--borda-arredondada); box-shadow: var(--sombra-media); }
 
+        /* =========================================
+           FOOTER
+           ========================================= */
         footer { background-color: var(--cor-texto); color: var(--cor-branco); text-align: center; padding: 50px 20px; font-size: 0.9rem; border-top: 5px solid var(--cor-primaria); }
 
-        /* === CARRINHO LATERAL === */
-        .overlay-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(3px); z-index: 2000; display: none; opacity: 0; transition: opacity 0.3s; }
+        /* =========================================
+           CARRINHO LATERAL
+           ========================================= */
+        .overlay-carrinho { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(3px); z-index: 2000; display: none; opacity: 0; transition: opacity 0.3s; }
         .sidebar-carrinho {
             position: fixed; top: 0; right: -450px; width: 100%; max-width: 450px; height: 100%;
             background: var(--cor-branco); z-index: 2001; box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            transition: right 0.4s ease; display: flex; flex-direction: column; padding: 30px;
+            transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; padding: 40px;
         }
         .sidebar-carrinho.aberto { right: 0; }
-        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         .sidebar-header h2 { font-size: 1.8rem; }
         .fechar-carrinho { font-size: 1.5rem; cursor: pointer; transition: var(--transicao); }
         .fechar-carrinho:hover { color: var(--cor-primaria); transform: rotate(90deg); }
         
-        .lista-carrinho { flex-grow: 1; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; }
-        .item-carrinho { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
-        .item-info h4 { font-size: 0.95rem; margin-bottom: 5px; font-family: var(--fonte-corpo); font-weight: 600; }
-        .item-info p { font-size: 0.85rem; color: var(--cor-texto-mutado); }
+        .lista-carrinho { flex-grow: 1; overflow-y: auto; margin-bottom: 20px; padding-right: 10px; }
+        .item-carrinho { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+        .item-info h4 { font-size: 1rem; margin-bottom: 5px; font-family: var(--fonte-corpo); font-weight: 600; }
+        .item-info p { font-size: 0.9rem; color: var(--cor-texto-mutado); }
         
         .controles-qtd { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
         .btn-qtd { background: #f0f0f0; border: none; width: 25px; height: 25px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.2s; }
@@ -176,27 +216,33 @@
         .btn-remover { background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 1.1rem; transition: var(--transicao); }
         .btn-remover:hover { transform: scale(1.2); }
 
-        .resumo-valores { background: var(--cor-fundo-alt); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .resumo-valores { background: var(--cor-fundo-alt); padding: 15px; border-radius: 8px; margin-bottom: 20px; }
         .linha-resumo { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.95rem; }
         .linha-resumo.total { font-size: 1.3rem; font-weight: 700; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 10px; }
 
-        .form-finalizar { display: flex; flex-direction: column; gap: 10px; }
-        .grupo-input { display: flex; flex-direction: column; gap: 3px; }
+        .form-finalizar { display: flex; flex-direction: column; gap: 12px; }
+        .grupo-input { display: flex; flex-direction: column; gap: 4px; }
         .grupo-input label { font-size: 0.85rem; font-weight: 600; color: var(--cor-texto-mutado); }
-        .form-finalizar input, .form-finalizar select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: var(--fonte-corpo); font-size: 0.95rem; }
-        .linha-dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .form-finalizar input, .form-finalizar select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: var(--fonte-corpo); font-size: 0.95rem; transition: var(--transicao); }
+        .form-finalizar input:focus, .form-finalizar select:focus { outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 0 3px rgba(242, 208, 39, 0.2); }
+        .linha-dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-        /* === RESPONSIVIDADE === */
+        /* =========================================
+           RESPONSIVIDADE
+           ========================================= */
         @media (max-width: 992px) {
-            .grid-duplo { grid-template-columns: 1fr; }
+            .grid-duplo { grid-template-columns: 1fr; gap: 40px; }
+            .img-destaque { height: 400px; }
             .hero h1 { font-size: 4rem; }
         }
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px 5%; }
+            header { flex-direction: column; gap: 20px; padding: 15px 5%; }
             nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .hero h1 { font-size: 3rem; }
-            .secao { padding: 70px 5%; }
-            .sidebar-carrinho { padding: 20px; }
+            .secao { padding: 80px 5%; }
+            .titulo-secao { font-size: 2.2rem; }
+            .sidebar-carrinho { padding: 25px; }
+            .logo img { height: 45px; }
         }
     </style>
 </head>
@@ -205,7 +251,7 @@
     <!-- Overlay do Carrinho -->
     <div class="overlay-carrinho" onclick="toggleCarrinho()"></div>
 
-    <!-- Carrinho Lateral com Formulário Completo -->
+    <!-- Carrinho Lateral -->
     <aside class="sidebar-carrinho" id="sidebar-carrinho">
         <div class="sidebar-header">
             <h2>Seu Pedido</h2>
@@ -213,7 +259,7 @@
         </div>
         
         <div class="lista-carrinho" id="lista-carrinho">
-            <!-- Itens inseridos via JS -->
+            <p style="text-align:center; color:#888; margin-top:40px;">Seu carrinho está vazio.</p>
         </div>
         
         <div class="resumo-valores">
@@ -250,7 +296,7 @@
                     <input type="text" id="endereco" required placeholder="Av. Brasil, 123">
                 </div>
                 <div class="grupo-input">
-                    <label>Valor do Frete (R$):</label>
+                    <label>Frete (R$):</label>
                     <input type="number" id="frete" min="0" step="0.01" value="0.00" required oninput="atualizarCarrinho()">
                 </div>
             </div>
@@ -266,7 +312,7 @@
             </div>
 
             <button type="submit" class="btn btn-whatsapp" style="width: 100%; margin-top: 10px;">
-                <i class="fab fa-whatsapp"></i> Enviar Pedido
+                <i class="fab fa-whatsapp"></i> Enviar Pedido Calculado
             </button>
         </form>
     </aside>
@@ -274,7 +320,8 @@
     <!-- Header -->
     <header>
         <a href="#" class="logo">
-            BÚFALAS <span>SÃO JOÃO</span>
+            <!-- Foto do Logo -->
+            <img src="logo.png" alt="Búfalas São João" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-family:Playfair Display; font-size:1.8rem; font-weight:700;\'>BÚFALAS <span style=\'color:var(--cor-primaria);\'>SÃO JOÃO</span></span>';">
         </a>
         <nav>
             <a href="#sobre">Sobre</a>
@@ -294,8 +341,8 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-conteudo">
-            <h1>Búfalas São João</h1>
-            <p>O verdadeiro sabor da Mantiqueira. Queijos artesanais A2A2 e turismo rural inesquecível.</p>
+            <h1>SABORES FEITOS AQUI.</h1>
+            <p>Queijos artesanais, bolos caseiros e café fresco. A verdadeira experiência da fazenda para a sua mesa.</p>
             <a href="#loja" class="btn btn-primario">Fazer Pedido Agora</a>
         </div>
     </section>
@@ -304,23 +351,29 @@
     <section id="sobre" class="secao">
         <div class="container grid-duplo">
             <div class="texto-destaque">
-                <h2>Paixão e Propósito desde 2016</h2>
-                <p>A <strong>Búfalas São João</strong> nasceu da descoberta do leite de búfala A2A2 como uma alternativa saudável. Hoje, produzimos 36 produtos artesanais com o leite das nossas búfalas.</p>
+                <span class="tag-secao">Nossa História</span>
+                <h2>Natureza, Família e Sabor</h2>
+                <p>Em Paraguaçu Paulista, a <strong>Búfalas São João</strong> é um verdadeiro exemplo de paixão e propósito. Fundada em 2016, nasceu da descoberta do leite de búfala A2A2 como uma alternativa saudável e nutritiva.</p>
+                <p>Hoje, produzimos dezenas de produtos artesanais, todos feitos com o leite das nossas búfalas criadas no próprio sítio.</p>
                 <div style="display: flex; align-items: center; gap: 15px; margin-top: 30px; font-weight: 600; background: #fff; padding: 15px 20px; border-radius: 8px; box-shadow: var(--sombra-suave);">
                     <i class="fas fa-award" style="color: var(--cor-primaria); font-size: 1.8rem;"></i>
                     <span>Queijo Frescal e Iogurte Premiados</span>
                 </div>
             </div>
-            <img src="https://images.unsplash.com/photo-1590405622837-2b1a5f2c4b7a?q=80&w=800&auto=format&fit=crop" alt="Búfala no campo" class="img-destaque">
+            <div>
+                <!-- Foto da Búfala -->
+                <img src="fazenda.jpg" alt="Búfala no campo" class="img-destaque" onerror="this.src='https://images.unsplash.com/photo-1590405622837-2b1a5f2c4b7a?q=80&w=800&auto=format&fit=crop'">
+            </div>
         </div>
     </section>
 
-    <!-- LOJA (PRODUTOS) -->
+    <!-- LOJA -->
     <section id="loja" class="secao fundo-alt">
         <div class="container">
             <div class="cabecalho-secao">
+                <span class="tag-secao">Loja Artesanal</span>
                 <h2 class="titulo-secao">Nossos Produtos</h2>
-                <p class="subtitulo-secao">Clique no WhatsApp para adicionar ao carrinho e calcular o frete.</p>
+                <p class="subtitulo-secao">Clique em "Pedir" para adicionar ao carrinho e calcular o frete.</p>
             </div>
             <div class="grid-produtos" id="grid-produtos">
                 <!-- Inserido via JS -->
@@ -331,11 +384,16 @@
     <!-- TURISMO -->
     <section id="turismo" class="secao">
         <div class="container grid-duplo">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop" alt="Passeio" class="img-destaque">
+            <div>
+                <!-- Foto do Café da Manhã -->
+                <img src="cafe-manha.jpg" alt="Café da manhã rural" class="img-destaque" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop'">
+            </div>
             <div class="texto-destaque">
-                <h2>Passeios com as Búfalas</h2>
-                <p>Venha viver uma experiência inesquecível nos finais de semana! Passeios guiados, café da manhã rural e muito lazer para toda a família.</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20passeio." target="_blank" class="btn btn-primario" style="margin-top: 20px;">Agendar Passeio</a>
+                <span class="tag-secao">Turismo Rural</span>
+                <h2>Viva o Campo</h2>
+                <p>Venha viver uma experiência inesquecível nos finais de semana! Oferecemos passeios guiados para conhecer de perto as nossas búfalas e a rotina da fazenda.</p>
+                <p>Aproveite também o nosso delicioso café da manhã rural, com pães de queijo quentinhos, bolos caseiros e o melhor café fresco.</p>
+                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20passeio%20com%20as%20b%C3%BAfalas.%0A%0A*Nome:*%20%0A*Data:*%20%0A*Quantidade%20de%20Pessoas:*%20" target="_blank" class="btn btn-escuro" style="margin-top: 20px;">Agendar Passeio</a>
             </div>
         </div>
     </section>
@@ -344,23 +402,25 @@
     <section class="secao fundo-alt">
         <div class="container">
             <div class="cabecalho-secao">
+                <span class="tag-secao">Conforto</span>
                 <h2 class="titulo-secao">Nossa Estrutura</h2>
+                <p class="subtitulo-secao">Tudo o que você precisa para um dia perfeito no campo.</p>
             </div>
             <div class="grid-icones">
                 <div class="icone-card">
                     <i class="fas fa-beer"></i>
                     <h3>Bebidas</h3>
-                    <p>Cervejas, sucos e refrigerantes.</p>
+                    <p>Cervejas geladas, sucos naturais e refrigerantes.</p>
                 </div>
                 <div class="icone-card">
                     <i class="fas fa-parking"></i>
                     <h3>Estacionamento</h3>
-                    <p>Amplo e gratuito.</p>
+                    <p>Espaço amplo, seguro e gratuito para todos.</p>
                 </div>
                 <div class="icone-card">
                     <i class="fas fa-restroom"></i>
                     <h3>Banheiros</h3>
-                    <p>Limpos e confortáveis.</p>
+                    <p>Instalações limpas, confortáveis e acessíveis.</p>
                 </div>
             </div>
         </div>
@@ -370,25 +430,39 @@
     <section id="mitos" class="secao">
         <div class="container">
             <div class="cabecalho-secao">
+                <span class="tag-secao">Informação</span>
                 <h2 class="titulo-secao">Mitos e Verdades</h2>
+                <p class="subtitulo-secao">Tire suas dúvidas sobre o leite de búfala.</p>
             </div>
+            
             <div class="accordion">
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>O leite de búfala é menos saudável por ter mais gordura?</span>
+                        <span>O leite de búfala tem mais gordura e por isso é menos saudável?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="accordion-content">
-                        <p><strong>MITO.</strong> A gordura traz mais cremosidade e sabor. Ele é rico em cálcio e possui a proteína A2A2, de mais fácil digestão.</p>
+                        <p><strong>MITO.</strong> O leite de búfala realmente possui um teor de gordura ligeiramente maior, mas isso significa mais cremosidade e sabor. Ele é rico em cálcio, proteínas e possui a proteína A2A2, que é de mais fácil digestão.</p>
                     </div>
                 </div>
+                
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>A mozzarella de búfala é a mesma de supermercado?</span>
+                        <span>O leite de búfala pode ser consumido por pessoas com intolerância?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="accordion-content">
-                        <p><strong>MITO.</strong> A verdadeira é feita só com leite de búfala, tendo textura e sabor únicos. A comum é de leite de vaca.</p>
+                        <p><strong>VERDADE (com ressalvas).</strong> Por conter a proteína A2A2, ele costuma ser mais bem tolerado. No entanto, ele contém lactose, portanto, pessoas com intolerância severa devem consumir com moderação.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>A mozzarella de búfala é a mesma vendida em supermercados comuns?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>MITO.</strong> A verdadeira Mozzarella di Bufala é feita exclusivamente com leite de búfala. Ela tem textura mais firme, sabor levemente ácido e muito mais cremosidade. A comum é feita com leite de vaca.</p>
                     </div>
                 </div>
             </div>
@@ -397,31 +471,41 @@
 
     <!-- CONTATO -->
     <section id="contato" class="secao fundo-alt">
-        <div class="container grid-duplo">
-            <ul class="contato-info">
-                <li><i class="fas fa-map-marker-alt"></i> <div>Sítio São João, Bairro Água do Sapé - Paraguaçu Paulista/SP</div></li>
-                <li><i class="fas fa-phone-alt"></i> <div>(18) 99643-8262 (Lary)<br>(18) 99623-2661 (Juliano)</div></li>
-                <li><i class="fab fa-instagram"></i> <div>@bufalasaojoao</div></li>
-            </ul>
-            <div class="mapa">
-                <iframe src="https://maps.google.com/maps?q=-22.413900,-50.614201&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="tag-secao">Localização</span>
+                <h2 class="titulo-secao">Fale Conosco</h2>
+            </div>
+            <div class="grid-duplo">
+                <ul class="contato-info">
+                    <li><i class="fas fa-map-marker-alt"></i> <div><strong>Endereço:</strong><br>Sítio São João, Bairro Água do Sapé<br>Paraguaçu Paulista - SP</div></li>
+                    <li><i class="fas fa-phone-alt"></i> <div><strong>Telefone:</strong><br>(18) 99643-8262 (Lary)<br>(18) 99623-2661 (Juliano)</div></li>
+                    <li><i class="fas fa-envelope"></i> <div><strong>E-mail:</strong><br>bufalasaojoao@gmail.com</div></li>
+                    <li><i class="fab fa-instagram"></i> <div><strong>Instagram:</strong><br>@bufalasaojoao</div></li>
+                </ul>
+                <div class="mapa">
+                    <iframe src="https://maps.google.com/maps?q=-22.413900,-50.614201&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 Búfalas São João. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px; opacity: 0.7;">www.bufalassaojoao.com.br</p>
     </footer>
 
-    <!-- JAVASCRIPT (Lógica do Carrinho e WhatsApp) -->
+    <!-- JAVASCRIPT -->
     <script>
+        // Catálogo com os nomes das suas imagens
         const produtos = [
-            { id: 1, nome: "Queijo Fresco", preco: 35.00, img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=600&auto=format&fit=crop", desc: "Macio e leve." },
-            { id: 2, nome: "Mozzarella", preco: 45.00, img: "https://images.unsplash.com/photo-1621263764624-3a3b1f3f6a1a?q=80&w=600&auto=format&fit=crop", desc: "Elástica e saborosa." },
-            { id: 3, nome: "Burrata", preco: 50.00, img: "https://images.unsplash.com/photo-1625938145744-e380515bfd1f?q=80&w=600&auto=format&fit=crop", desc: "Cremosa e deliciosa." },
-            { id: 4, nome: "Parmesão", preco: 55.00, img: "https://images.unsplash.com/photo-1589881133595-3f5f2b2c9a0a?q=80&w=600&auto=format&fit=crop", desc: "Curado e intenso." },
-            { id: 5, nome: "Doce de Leite", preco: 25.00, img: "https://images.unsplash.com/photo-1625938145744-e380515bfd1f?q=80&w=600&auto=format&fit=crop", desc: "Cremoso e irresistível." },
-            { id: 6, nome: "Iogurte Natural", preco: 15.00, img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=600&auto=format&fit=crop", desc: "Saudável e leve." }
+            { id: 1, nome: "Queijo Fresco", preco: 35.00, img: "queijo-fresco.jpg", desc: "Macio e leve, perfeito para o café da manhã." },
+            { id: 2, nome: "Mozzarella de Búfala", preco: 45.00, img: "mozzarella.jpg", desc: "Elástica e saborosa, ideal para tábuas e pizzas." },
+            { id: 3, nome: "Burrata", preco: 50.00, img: "burrata.jpg", desc: "Cremosa por dentro, deliciosa com tomates." },
+            { id: 4, nome: "Tábua de Queijos Especiais", preco: 75.00, img: "tábua-queijos.jpg", desc: "Seleção especial de queijos curados." },
+            { id: 5, nome: "Doce de Leite", preco: 25.00, img: "doce-leite.jpg", desc: "Artesanal, cremoso e irresistível." },
+            { id: 6, nome: "Doces Caseiros", preco: 22.00, img: "doces.jpg", desc: "Bolos e doces feitos com carinho." }
         ];
 
         let carrinho = [];
@@ -433,12 +517,12 @@
             produtos.forEach(prod => {
                 grid.innerHTML += `
                     <article class="card-produto">
-                        <img src="${prod.img}" alt="${prod.nome}" class="img-produto">
+                        <!-- A tag img puxa a sua foto local. O onerror coloca uma genérica se a foto não for encontrada -->
+                        <img src="${prod.img}" alt="${prod.nome}" class="img-produto" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=600&auto=format&fit=crop'">
                         <div class="info-produto">
                             <h3>${prod.nome}</h3>
                             <p>${prod.desc}</p>
                             <div class="preco">R$ ${prod.preco.toFixed(2).replace('.', ',')}</div>
-                            <!-- Botão de WhatsApp que chama a função de adicionar -->
                             <button class="btn btn-whatsapp" onclick="adicionarAoCarrinho(${prod.id})">
                                 <i class="fab fa-whatsapp"></i> Pedir
                             </button>
@@ -460,10 +544,10 @@
             }
             
             atualizarCarrinho();
-            abrirCarrinho(); // Abre a gaveta automaticamente
+            abrirCarrinho(); 
         }
 
-        // Alterar Quantidade na Gaveta
+        // Alterar Quantidade
         function alterarQtd(id, delta) {
             const item = carrinho.find(i => i.id === id);
             if (item) {
@@ -482,7 +566,7 @@
             atualizarCarrinho();
         }
 
-        // Atualizar Interface do Carrinho (Calculando Tudo)
+        // Atualizar Interface
         function atualizarCarrinho() {
             const lista = document.getElementById('lista-carrinho');
             const contador = document.getElementById('contador-carrinho');
@@ -522,7 +606,7 @@
             totalSpan.innerText = `R$ ${(subtotal + freteInput).toFixed(2).replace('.', ',')}`;
         }
 
-        // Abrir/Fechar Gaveta
+        // Abrir/Fechar Carrinho
         function toggleCarrinho() {
             const sidebar = document.getElementById('sidebar-carrinho');
             const overlay = document.querySelector('.overlay-carrinho');
@@ -546,16 +630,15 @@
             setTimeout(() => overlay.style.opacity = '1', 10);
         }
 
-        // Finalizar Pedido com Cálculo Completo
+        // Finalizar Pedido
         document.getElementById('form-finalizar').addEventListener('submit', function(e) {
             e.preventDefault();
 
             if (carrinho.length === 0) { 
-                alert("Adicione pelo menos um produto para fazer o pedido."); 
+                alert("Seu carrinho está vazio!"); 
                 return; 
             }
 
-            // Pegar dados do formulário
             const nome = document.getElementById('nome').value;
             const cidade = document.getElementById('cidade').value;
             const bairro = document.getElementById('bairro').value;
@@ -563,7 +646,6 @@
             const pagamento = document.getElementById('pagamento').value;
             const frete = parseFloat(document.getElementById('frete').value) || 0;
 
-            // Calcular valores
             let subtotal = 0;
             let itensMensagem = "";
 
@@ -575,7 +657,6 @@
 
             const total = subtotal + frete;
 
-            // Montar mensagem final
             let mensagem = `Olá! Gostaria de confirmar meu pedido:%0A%0A`;
             mensagem += `*--- DADOS DO CLIENTE ---*%0A`;
             mensagem += `*Nome:* ${nome}%0A`;
@@ -592,11 +673,10 @@
             mensagem += `*Frete:* R$ ${frete.toFixed(2).replace('.', ',')}%0A`;
             mensagem += `*TOTAL A PAGAR:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
 
-            // Abrir WhatsApp
             window.open(`https://wa.me/5518996438262?text=${mensagem}`, '_blank');
         });
 
-        // Lógica do Accordion
+        // Accordion
         function toggleAccordion(element) {
             const item = element.parentElement;
             const ativo = item.classList.contains('ativo');
@@ -604,7 +684,7 @@
             if (!ativo) item.classList.add('ativo');
         }
 
-        // Inicialização
+        // Init
         renderizarProdutos();
         atualizarCarrinho();
     </script>
