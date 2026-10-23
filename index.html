@@ -1,957 +1,612 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Búfalas São João | Queijos Artesanais & Turismo Rural</title>
+    <title>Búfalas São João | Queijos Premium, Turismo e Lazer</title>
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <!-- Fontes Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            yellow: '#FFC700',
-                            gold: '#E5B200',
-                            darkYellow: '#D4A400',
-                            black: '#121212',
-                            darkGray: '#1E1E1E',
-                            cardGray: '#242424',
-                            lightGray: '#F9F9FB',
-                            accent: '#2A2A2A'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .logo-font {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 0.05em;
+        /* === DESIGN SYSTEM E VARIÁVEIS === */
+        :root {
+            --cor-primaria: #F2D027;
+            --cor-primaria-hover: #d9b81f;
+            --cor-fundo: #FDFBF7;
+            --cor-fundo-alt: #F4EFE6;
+            --cor-texto: #2C2C2C;
+            --cor-texto-mutado: #6B6B6B;
+            --cor-branco: #FFFFFF;
+            --cor-whatsapp: #25D366;
+            --cor-whatsapp-hover: #1EBE5A;
+            
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Inter', sans-serif;
+            
+            --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --sombra-forte: 0 20px 40px rgba(0, 0, 0, 0.12);
+            
+            --transicao: all 0.3s ease;
+            --borda-arredondada: 12px;
         }
-        .bg-pattern {
-            background-color: #121212;
-            background-image: radial-gradient(#FFC700 0.75px, transparent 0.75px), radial-gradient(#FFC700 0.75px, #121212 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            opacity: 0.95;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .yellow-gradient {
-            background: linear-gradient(135deg, #FFD533 0%, #FFC700 50%, #E5B200 100%);
+
+        h1, h2, h3, h4 { font-family: var(--fonte-titulo); color: var(--cor-texto); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* === BOTÕES === */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 32px; border-radius: 50px; font-weight: 500;
+            font-size: 0.95rem; letter-spacing: 0.5px; transition: var(--transicao);
+            cursor: pointer; border: none; gap: 10px; font-family: var(--fonte-corpo);
         }
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .btn-primario { background-color: var(--cor-primaria); color: var(--cor-texto); }
+        .btn-primario:hover { background-color: var(--cor-primaria-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(242, 208, 39, 0.3); }
+        .btn-whatsapp { background-color: var(--cor-whatsapp); color: var(--cor-branco); }
+        .btn-whatsapp:hover { background-color: var(--cor-whatsapp-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+
+        /* === HEADER === */
+        header {
+            background-color: rgba(253, 251, 247, 0.95); backdrop-filter: blur(10px);
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(255, 199, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+        .logo { font-family: var(--fonte-titulo); font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--cor-primaria); }
+        nav { display: flex; gap: 35px; }
+        nav a { font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transicao); position: relative; }
+        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--cor-primaria); transition: var(--transicao); }
+        nav a:hover::after { width: 100%; }
+        
+        .carrinho-btn { position: relative; font-size: 1.4rem; cursor: pointer; transition: var(--transicao); }
+        .carrinho-btn:hover { color: var(--cor-primaria); transform: scale(1.1); }
+        .carrinho-contador { position: absolute; top: -8px; right: -12px; background-color: var(--cor-texto); color: var(--cor-primaria); font-size: 0.75rem; font-weight: 600; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+
+        /* === HERO === */
+        .hero {
+            height: 85vh; position: relative; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 0 20px;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1590405622837-2b1a5f2c4b7a?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            z-index: -2;
+        }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); z-index: -1; }
+        .hero-conteudo { max-width: 900px; color: var(--cor-branco); }
+        .hero h1 { font-size: 5rem; color: var(--cor-branco); margin-bottom: 15px; text-shadow: 2px 4px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; font-weight: 300; margin-bottom: 35px; text-shadow: 1px 2px 5px rgba(0,0,0,0.5); }
+
+        /* === SEÇÕES === */
+        .secao { padding: 100px 5%; }
+        .fundo-alt { background-color: var(--cor-fundo-alt); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .cabecalho-secao { text-align: center; margin-bottom: 60px; }
+        .titulo-secao { font-size: 3rem; margin-bottom: 15px; }
+        .subtitulo-secao { color: var(--cor-texto-mutado); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* === GRID DUPLO === */
+        .grid-duplo { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .texto-destaque h2 { font-size: 2.8rem; margin-bottom: 25px; }
+        .texto-destaque p { font-size: 1.1rem; color: var(--cor-texto-mutado); margin-bottom: 20px; line-height: 1.8; }
+        .img-destaque { width: 100%; height: 550px; object-fit: cover; border-radius: var(--borda-arredondada); box-shadow: var(--sombra-forte); }
+
+        /* === CARDS DE PRODUTOS === */
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
+        .card-produto {
+            background: var(--cor-branco); border-radius: var(--borda-arredondada);
+            overflow: hidden; box-shadow: var(--sombra-suave); transition: var(--transicao);
+            display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.03);
+        }
+        .card-produto:hover { transform: translateY(-10px); box-shadow: var(--sombra-forte); }
+        .img-produto { width: 100%; height: 280px; object-fit: cover; transition: transform 0.5s ease; }
+        .card-produto:hover .img-produto { transform: scale(1.05); }
+        .info-produto { padding: 30px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+        .info-produto h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .info-produto p { color: var(--cor-texto-mutado); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+        .preco { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+
+        /* === INFRAESTRUTURA === */
+        .grid-icones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        .icone-card { text-align: center; padding: 40px 20px; background: var(--cor-branco); border-radius: var(--borda-arredondada); box-shadow: var(--sombra-suave); }
+        .icone-card i { font-size: 2.5rem; color: var(--cor-primaria); margin-bottom: 20px; }
+        .icone-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .icone-card p { font-size: 0.95rem; color: var(--cor-texto-mutado); }
+
+        /* === ACCORDION === */
+        .accordion { max-width: 800px; margin: 0 auto; }
+        .accordion-item { background: var(--cor-branco); margin-bottom: 15px; border-radius: 8px; box-shadow: var(--sombra-suave); overflow: hidden; transition: var(--transicao); }
+        .accordion-header { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-size: 1.1rem; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 25px; color: var(--cor-texto-mutado); }
+        .accordion-item.ativo { border-left: 4px solid var(--cor-primaria); }
+        .accordion-item.ativo .accordion-content { padding: 0 25px 25px 25px; max-height: 300px; }
+        .accordion-item.ativo .accordion-header i { transform: rotate(180deg); color: var(--cor-primaria); }
+        .accordion-header i { transition: transform 0.4s ease; color: var(--cor-texto-mutado); }
+
+        /* === CONTATO === */
+        .contato-info { display: flex; flex-direction: column; gap: 25px; }
+        .contato-info li { display: flex; align-items: flex-start; gap: 20px; font-size: 1.05rem; }
+        .contato-info i { color: var(--cor-primaria); font-size: 1.4rem; margin-top: 3px; }
+        .mapa iframe { width: 100%; height: 450px; border: none; border-radius: var(--borda-arredondada); box-shadow: var(--sombra-media); }
+
+        footer { background-color: var(--cor-texto); color: var(--cor-branco); text-align: center; padding: 50px 20px; font-size: 0.9rem; border-top: 5px solid var(--cor-primaria); }
+
+        /* === CARRINHO LATERAL === */
+        .overlay-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(3px); z-index: 2000; display: none; opacity: 0; transition: opacity 0.3s; }
+        .sidebar-carrinho {
+            position: fixed; top: 0; right: -450px; width: 100%; max-width: 450px; height: 100%;
+            background: var(--cor-branco); z-index: 2001; box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transition: right 0.4s ease; display: flex; flex-direction: column; padding: 30px;
+        }
+        .sidebar-carrinho.aberto { right: 0; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .sidebar-header h2 { font-size: 1.8rem; }
+        .fechar-carrinho { font-size: 1.5rem; cursor: pointer; transition: var(--transicao); }
+        .fechar-carrinho:hover { color: var(--cor-primaria); transform: rotate(90deg); }
+        
+        .lista-carrinho { flex-grow: 1; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; }
+        .item-carrinho { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+        .item-info h4 { font-size: 0.95rem; margin-bottom: 5px; font-family: var(--fonte-corpo); font-weight: 600; }
+        .item-info p { font-size: 0.85rem; color: var(--cor-texto-mutado); }
+        
+        .controles-qtd { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .btn-qtd { background: #f0f0f0; border: none; width: 25px; height: 25px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .btn-qtd:hover { background: var(--cor-primaria); }
+        
+        .btn-remover { background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 1.1rem; transition: var(--transicao); }
+        .btn-remover:hover { transform: scale(1.2); }
+
+        .resumo-valores { background: var(--cor-fundo-alt); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .linha-resumo { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.95rem; }
+        .linha-resumo.total { font-size: 1.3rem; font-weight: 700; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 10px; }
+
+        .form-finalizar { display: flex; flex-direction: column; gap: 10px; }
+        .grupo-input { display: flex; flex-direction: column; gap: 3px; }
+        .grupo-input label { font-size: 0.85rem; font-weight: 600; color: var(--cor-texto-mutado); }
+        .form-finalizar input, .form-finalizar select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: var(--fonte-corpo); font-size: 0.95rem; }
+        .linha-dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        /* === RESPONSIVIDADE === */
+        @media (max-width: 992px) {
+            .grid-duplo { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px 5%; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .hero h1 { font-size: 3rem; }
+            .secao { padding: 70px 5%; }
+            .sidebar-carrinho { padding: 20px; }
         }
     </style>
 </head>
-<body class="bg-brand-black text-gray-200 font-sans antialiased selection:bg-brand-yellow selection:text-black">
+<body>
 
-    <!-- Header / Navbar -->
-    <header class="fixed w-full top-0 z-50 bg-brand-black/95 backdrop-blur-md border-b border-brand-yellow/20 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo Branding (Logomarca Original com Chifre de Búfalo) -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 bg-brand-yellow rounded-xl p-1.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                        <!-- Símbolo fiel dos chifres da Búfalas São João em preto -->
-                        <svg viewBox="0 0 100 80" class="w-full h-full fill-brand-black">
-                            <path d="M10,20 C25,10 40,25 50,45 C60,25 75,10 90,20 C80,35 60,40 50,55 C40,40 20,35 10,20 Z" />
-                            <path d="M20,38 C32,32 42,42 48,58 C42,48 30,42 20,38 Z" />
-                            <path d="M80,38 C68,32 58,42 52,58 C58,48 70,42 80,38 Z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="block text-lg font-bold logo-font text-brand-yellow tracking-wider leading-none">BÚFALAS</span>
-                        <span class="block text-sm font-semibold logo-font text-white tracking-widest leading-tight">SÃO JOÃO</span>
-                        <span class="block text-[9px] uppercase tracking-widest text-gray-400 font-medium">Queijos Artesanais & Gastronomia</span>
-                    </div>
-                </a>
+    <!-- Overlay do Carrinho -->
+    <div class="overlay-carrinho" onclick="toggleCarrinho()"></div>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
-                    <a href="#produtos" class="text-gray-300 hover:text-brand-yellow transition-colors">Queijos & Produtos</a>
-                    <a href="#gastronomia" class="text-gray-300 hover:text-brand-yellow transition-colors">Café & Almoço</a>
-                    <a href="#turismo" class="text-gray-300 hover:text-brand-yellow transition-colors">Passeios & Estrutura</a>
-                    <a href="#entregas" class="text-gray-300 hover:text-brand-yellow transition-colors">Entregas</a>
-                    <a href="#localizacao" class="text-gray-300 hover:text-brand-yellow transition-colors">Como Chegar</a>
-                </nav>
-
-                <!-- Actions: Cart & Contact Button -->
-                <div class="hidden sm:flex items-center space-x-4">
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1%20Lary%20Barbaresco,%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20queijos%20e%20turismo%20rural!" target="_blank" class="hidden xl:flex items-center gap-2 text-xs text-gray-300 hover:text-brand-yellow bg-brand-darkGray px-3 py-1.5 rounded-full border border-brand-yellow/20 transition-all">
-                        <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-400"></i>
-                        <span>Lary Barbaresco: <strong class="text-white">+55 (18) 99643-8262</strong></span>
-                    </a>
-                    <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-brand-darkGray text-gray-300 hover:text-brand-yellow hover:bg-brand-accent transition-all">
-                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-brand-yellow text-brand-black text-xs font-bold rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
-                    </button>
-                    <a href="#produtos" class="yellow-gradient text-brand-black font-bold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-brand-yellow/20 hover:scale-105 transition-all text-sm flex items-center gap-2">
-                        <i data-lucide="shopping-cart" class="w-4 h-4"></i> Pedir Queijos
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center gap-3">
-                    <button onclick="toggleCart()" class="relative p-2 rounded-full bg-brand-darkGray text-gray-300">
-                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                        <span id="cart-count-mobile" class="absolute -top-1 -right-1 w-4 h-4 bg-brand-yellow text-brand-black text-[10px] font-bold rounded-full flex items-center justify-center opacity-0">0</span>
-                    </button>
-                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-brand-darkGray focus:outline-none">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
+    <!-- Carrinho Lateral com Formulário Completo -->
+    <aside class="sidebar-carrinho" id="sidebar-carrinho">
+        <div class="sidebar-header">
+            <h2>Seu Pedido</h2>
+            <span class="fechar-carrinho" onclick="toggleCarrinho()">&times;</span>
+        </div>
+        
+        <div class="lista-carrinho" id="lista-carrinho">
+            <!-- Itens inseridos via JS -->
+        </div>
+        
+        <div class="resumo-valores">
+            <div class="linha-resumo">
+                <span>Subtotal:</span>
+                <span id="subtotal-carrinho">R$ 0,00</span>
+            </div>
+            <div class="linha-resumo total">
+                <span>Total:</span>
+                <span id="total-carrinho">R$ 0,00</span>
             </div>
         </div>
 
-        <!-- Mobile Nav Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-brand-darkGray border-b border-brand-yellow/10 px-4 pt-2 pb-6 space-y-3">
-            <a href="#produtos" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-yellow font-medium">Queijos & Produtos</a>
-            <a href="#gastronomia" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-yellow font-medium">Café Rural & Almoço Caipira</a>
-            <a href="#turismo" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-yellow font-medium">Passeios & Estrutura</a>
-            <a href="#entregas" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-yellow font-medium">Entregas Semanais</a>
-            <a href="#localizacao" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-yellow font-medium">Como Chegar (GPS)</a>
-            <a href="#contato" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-yellow font-medium">Falar com Lary Barbaresco</a>
-            <a href="https://wa.me/5518996438262?text=Ol%C3%A1%20Lary%20Barbaresco!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20agendar%20passeio." target="_blank" class="w-full text-center yellow-gradient text-brand-black font-bold py-3 rounded-xl block mt-4">
-                WhatsApp: Lary Barbaresco (+55 18 99643-8262)
-            </a>
+        <form class="form-finalizar" id="form-finalizar">
+            <div class="grupo-input">
+                <label>Nome Completo:</label>
+                <input type="text" id="nome" required placeholder="Ex: João Silva">
+            </div>
+            
+            <div class="linha-dupla">
+                <div class="grupo-input">
+                    <label>Cidade:</label>
+                    <input type="text" id="cidade" required placeholder="Ex: Assis">
+                </div>
+                <div class="grupo-input">
+                    <label>Bairro:</label>
+                    <input type="text" id="bairro" required placeholder="Centro">
+                </div>
+            </div>
+
+            <div class="linha-dupla">
+                <div class="grupo-input">
+                    <label>Rua e Número:</label>
+                    <input type="text" id="endereco" required placeholder="Av. Brasil, 123">
+                </div>
+                <div class="grupo-input">
+                    <label>Valor do Frete (R$):</label>
+                    <input type="number" id="frete" min="0" step="0.01" value="0.00" required oninput="atualizarCarrinho()">
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <label>Forma de Pagamento:</label>
+                <select id="pagamento" required>
+                    <option value="Pix">Pix</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp" style="width: 100%; margin-top: 10px;">
+                <i class="fab fa-whatsapp"></i> Enviar Pedido
+            </button>
+        </form>
+    </aside>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            BÚFALAS <span>SÃO JOÃO</span>
+        </a>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#loja">Loja</a>
+            <a href="#turismo">Turismo</a>
+            <a href="#mitos">Dúvidas</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="carrinho-btn" onclick="toggleCarrinho()">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="carrinho-contador" id="contador-carrinho">0</span>
         </div>
     </header>
 
-    <!-- Hero Section com Fotografia Unsplash Real de Búfala -->
-    <section id="inicio" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                        <i data-lucide="utensils" class="w-4 h-4"></i> Turismo Rural & Queijos Artesanais
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        Sabores da Roça, <span class="text-brand-yellow underline decoration-brand-yellow/40 decoration-wavy">Passeios de Búfala</span> & Tradição
-                    </h1>
-                    
-                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                        Desfrute do nosso autêntico <strong>Café da Manhã Rural</strong> e <strong>Almoço Caipira no Tacho</strong>, viva a experiência do passeio de búfala e receba nossos queijos 100% puro leite de búfala toda semana na sua casa!
-                    </p>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-conteudo">
+            <h1>Búfalas São João</h1>
+            <p>O verdadeiro sabor da Mantiqueira. Queijos artesanais A2A2 e turismo rural inesquecível.</p>
+            <a href="#loja" class="btn btn-primario">Fazer Pedido Agora</a>
+        </div>
+    </section>
 
-                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="#gastronomia" class="w-full sm:w-auto yellow-gradient text-brand-black text-center font-bold px-8 py-4 rounded-xl hover:shadow-xl hover:shadow-brand-yellow/20 hover:scale-105 transition-all text-base flex items-center justify-center gap-3">
-                            <i data-lucide="coffee" class="w-5 h-5"></i> Café & Almoço Caipira
-                        </a>
-                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1%20Lary%20Barbaresco!%20Gostaria%20de%20fazer%20um%20pedido%20de%20queijos%20ou%20agendar%20visita." target="_blank" class="w-full sm:w-auto bg-brand-darkGray text-white border border-brand-yellow/30 text-center font-semibold px-8 py-4 rounded-xl hover:bg-brand-accent hover:border-brand-yellow transition-all text-base flex items-center justify-center gap-2">
-                            <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400"></i> Falar com Lary Barbaresco
-                        </a>
-                    </div>
-
-                    <!-- Region Delivery Badge -->
-                    <div class="pt-6 border-t border-gray-800 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs sm:text-sm text-gray-300">
-                        <span class="flex items-center gap-1.5 text-brand-yellow font-bold">
-                            <i data-lucide="truck" class="w-4 h-4"></i> Entregas Semanais:
-                        </span>
-                        <span class="bg-brand-darkGray px-3 py-1 rounded-full border border-gray-700">Assis</span>
-                        <span class="bg-brand-darkGray px-3 py-1 rounded-full border border-gray-700">Cândido Mota</span>
-                        <span class="bg-brand-darkGray px-3 py-1 rounded-full border border-gray-700">Paraguaçu Paulista</span>
-                    </div>
+    <!-- SOBRE -->
+    <section id="sobre" class="secao">
+        <div class="container grid-duplo">
+            <div class="texto-destaque">
+                <h2>Paixão e Propósito desde 2016</h2>
+                <p>A <strong>Búfalas São João</strong> nasceu da descoberta do leite de búfala A2A2 como uma alternativa saudável. Hoje, produzimos 36 produtos artesanais com o leite das nossas búfalas.</p>
+                <div style="display: flex; align-items: center; gap: 15px; margin-top: 30px; font-weight: 600; background: #fff; padding: 15px 20px; border-radius: 8px; box-shadow: var(--sombra-suave);">
+                    <i class="fas fa-award" style="color: var(--cor-primaria); font-size: 1.8rem;"></i>
+                    <span>Queijo Frescal e Iogurte Premiados</span>
                 </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1590405622837-2b1a5f2c4b7a?q=80&w=800&auto=format&fit=crop" alt="Búfala no campo" class="img-destaque">
+        </div>
+    </section>
 
-                <!-- Right Hero Image Showcase com Búfala Real do Unsplash -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-yellow to-amber-600 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
-                        
-                        <div class="relative rounded-2xl overflow-hidden border-2 border-brand-yellow/30 bg-brand-darkGray shadow-2xl">
-                            <!-- Foto HD Unsplash de Búfala em Pastagem Verde -->
-                            <img src="https://images.unsplash.com/photo-1541414779316-956a5f3d6b1c?auto=format&fit=crop&w=1000&q=80" alt="Búfala na Fazenda Búfalas São João" class="w-full h-[440px] object-cover hover:scale-105 transition-transform duration-700">
-                            
-                            <!-- Floating Badge -->
-                            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-brand-black/90 backdrop-blur-md border border-brand-yellow/30 flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full yellow-gradient flex items-center justify-center text-brand-black shrink-0 font-bold">
-                                    <i data-lucide="heart" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-brand-yellow uppercase tracking-wider font-semibold">Sabor de Infância</p>
-                                    <h4 class="text-sm font-bold text-white">Comida com Gosto de Casa de Vó</h4>
-                                    <p class="text-xs text-gray-300">Passeio de Búfala & Buffet de Delícias</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- LOJA (PRODUTOS) -->
+    <section id="loja" class="secao fundo-alt">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <h2 class="titulo-secao">Nossos Produtos</h2>
+                <p class="subtitulo-secao">Clique no WhatsApp para adicionar ao carrinho e calcular o frete.</p>
+            </div>
+            <div class="grid-produtos" id="grid-produtos">
+                <!-- Inserido via JS -->
             </div>
         </div>
     </section>
 
-    <!-- Delivery Highlight Banner -->
-    <section id="entregas" class="yellow-gradient py-8 text-brand-black shadow-inner">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-6">
-                <span class="text-xs font-extrabold uppercase tracking-widest bg-brand-black text-brand-yellow px-4 py-1 rounded-full">Sistema Rápido de Pedidos</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold logo-font mt-2">Como Funcionam Nossas Entregas Semanais</h2>
+    <!-- TURISMO -->
+    <section id="turismo" class="secao">
+        <div class="container grid-duplo">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop" alt="Passeio" class="img-destaque">
+            <div class="texto-destaque">
+                <h2>Passeios com as Búfalas</h2>
+                <p>Venha viver uma experiência inesquecível nos finais de semana! Passeios guiados, café da manhã rural e muito lazer para toda a família.</p>
+                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20passeio." target="_blank" class="btn btn-primario" style="margin-top: 20px;">Agendar Passeio</a>
             </div>
+        </div>
+    </section>
 
-            <!-- 3 Steps Grid -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Step 1 -->
-                <div class="bg-brand-black/90 text-white p-6 rounded-2xl border border-brand-black/20 shadow-lg relative">
-                    <div class="w-10 h-10 rounded-xl yellow-gradient text-brand-black font-extrabold flex items-center justify-center text-lg mb-4">1</div>
-                    <h3 class="text-lg font-bold text-brand-yellow mb-2">Pedido via WhatsApp</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">
-                        Faça seu pedido diretamente pelo nosso WhatsApp com a <strong>Lary Barbaresco (+55 18 99643-8262)</strong> até a noite anterior à entrega.
-                    </p>
+    <!-- INFRAESTRUTURA -->
+    <section class="secao fundo-alt">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <h2 class="titulo-secao">Nossa Estrutura</h2>
+            </div>
+            <div class="grid-icones">
+                <div class="icone-card">
+                    <i class="fas fa-beer"></i>
+                    <h3>Bebidas</h3>
+                    <p>Cervejas, sucos e refrigerantes.</p>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="bg-brand-black/90 text-white p-6 rounded-2xl border border-brand-black/20 shadow-lg relative">
-                    <div class="w-10 h-10 rounded-xl yellow-gradient text-brand-black font-extrabold flex items-center justify-center text-lg mb-4">2</div>
-                    <h3 class="text-lg font-bold text-brand-yellow mb-2">Preparo Fresquinho</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">
-                        Nossa equipe separa tudo com muito carinho e cuidado direto na fazenda para garantir o frescor absoluto.
-                    </p>
+                <div class="icone-card">
+                    <i class="fas fa-parking"></i>
+                    <h3>Estacionamento</h3>
+                    <p>Amplo e gratuito.</p>
                 </div>
-
-                <!-- Step 3 -->
-                <div class="bg-brand-black/90 text-white p-6 rounded-2xl border border-brand-black/20 shadow-lg relative">
-                    <div class="w-10 h-10 rounded-xl yellow-gradient text-brand-black font-extrabold flex items-center justify-center text-lg mb-4">3</div>
-                    <h3 class="text-lg font-bold text-brand-yellow mb-2">Entrega na Sua Porta</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">
-                        Entregamos <strong>1x por semana (período da tarde)</strong> nas cidades de <strong>Assis, Cândido Mota e Paraguaçu Paulista</strong>.
-                    </p>
+                <div class="icone-card">
+                    <i class="fas fa-restroom"></i>
+                    <h3>Banheiros</h3>
+                    <p>Limpos e confortáveis.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rural Gastronomy Section (Café & Almoço Caipira com Imagens Unsplash Reais) -->
-    <section id="gastronomia" class="py-24 bg-brand-black relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">Gastronomia Autêntica de Fazenda</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold text-white logo-font">Café Rural & Almoço Caipira</h3>
-                <div class="w-24 h-1 bg-brand-yellow mx-auto mt-4 rounded-full"></div>
-                <p class="text-gray-400 mt-4 text-sm sm:text-base">
-                    Sabor de infância e comida com gosto de casa de vó! Preparados no fogão a lenha com ingredientes frescos da nossa fazenda.
-                </p>
+    <!-- MITOS E VERDADES -->
+    <section id="mitos" class="secao">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <h2 class="titulo-secao">Mitos e Verdades</h2>
             </div>
-
-            <div class="grid lg:grid-cols-2 gap-8">
-                
-                <!-- Café da Manhã Rural Card com Foto Unsplash de Mesa Colonial -->
-                <div class="bg-brand-darkGray rounded-3xl overflow-hidden border border-brand-yellow/20 shadow-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="relative h-64 overflow-hidden">
-                            <!-- Foto Unsplash HD: Mesa de café rural farta de madeira com pães, bolos e queijos -->
-                            <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80" alt="Mesa de Café da Manhã Rural Búfalas São João" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-darkGray via-transparent to-transparent"></div>
-                            <span class="absolute top-4 left-4 bg-brand-yellow text-brand-black font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Self-Service Colonial</span>
-                        </div>
-
-                        <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-2xl font-bold text-white logo-font">Café da Manhã Rural</h3>
-                                <span class="text-xs text-brand-yellow font-bold bg-brand-yellow/10 px-3 py-1 rounded-full border border-brand-yellow/30">Fartura Roceira</span>
-                            </div>
-
-                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                                Uma mesa farta recheada com delícias artesanais feitas no capricho para começar o dia no melhor estilo da roça:
-                            </p>
-
-                            <!-- Menu items grid -->
-                            <div class="grid sm:grid-cols-2 gap-3 text-sm text-gray-300 mb-6">
-                                <div class="flex items-center gap-2 bg-brand-black/60 p-3 rounded-xl border border-gray-800">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0"></i>
-                                    <span>Variedades de Queijos de Búfala</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-brand-black/60 p-3 rounded-xl border border-gray-800">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0"></i>
-                                    <span>Bolos Caseiros Quentinhos</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-brand-black/60 p-3 rounded-xl border border-gray-800">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0"></i>
-                                    <span>Pães Artesanais & Biscoitos</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-brand-black/60 p-3 rounded-xl border border-gray-800">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0"></i>
-                                    <span>Doce de Leite Artesanal</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-brand-black/60 p-3 rounded-xl border border-gray-800">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0"></i>
-                                    <span>Compotas Variadas da Roça</span>
-                                </div>
-                                <div class="flex items-center gap-2 bg-brand-black/60 p-3 rounded-xl border border-gray-800">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-yellow shrink-0"></i>
-                                    <span>Iogurtes de Búfala Self-Service</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>O leite de búfala é menos saudável por ter mais gordura?</span>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-
-                    <div class="px-8 pb-8">
-                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1%20Lary%20Barbaresco!%20Gostaria%20de%20reservar%20o%20Caf%C3%A9%20da%20Manh%C3%A3%20Rural." target="_blank" class="w-full yellow-gradient text-brand-black font-bold py-3.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform shadow-lg">
-                            <i data-lucide="calendar" class="w-4 h-4"></i> Consultar Horários & Reservar
-                        </a>
+                    <div class="accordion-content">
+                        <p><strong>MITO.</strong> A gordura traz mais cremosidade e sabor. Ele é rico em cálcio e possui a proteína A2A2, de mais fácil digestão.</p>
                     </div>
                 </div>
-
-                <!-- Almoço Caipira Card com Foto Unsplash de Comida de Fogão a Lenha / Tacho -->
-                <div class="bg-brand-darkGray rounded-3xl overflow-hidden border border-brand-yellow/20 shadow-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="relative h-64 overflow-hidden">
-                            <!-- Foto Unsplash HD: Panela caipira/tacho com fumaça e comida feita no fogão a lenha -->
-                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Almoço Caipira no Tacho Búfalas São João" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-darkGray via-transparent to-transparent"></div>
-                            <span class="absolute top-4 left-4 bg-amber-500 text-brand-black font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Fogão a Lenha & Tacho</span>
-                        </div>
-
-                        <div class="p-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-2xl font-bold text-white logo-font">Almoço Caipira Tradicional</h3>
-                                <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">Receita de Vó</span>
-                            </div>
-
-                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                                O autêntico sabor da roça com pratos caipiras de dar água na boca, servidos com carinho no tacho e fogão a lenha:
-                            </p>
-
-                            <!-- Menu items chips -->
-                            <div class="flex flex-wrap gap-2 text-xs text-gray-200 mb-6">
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Arroz Soltinho</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Feijão Gordo</span>
-                                <span class="bg-brand-yellow/20 text-brand-yellow font-bold px-3 py-2 rounded-xl border border-brand-yellow/30">Leitoa no Tacho</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Frango Caipira ao Molho</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Galinha na Cerveja</span>
-                                <span class="bg-brand-yellow/20 text-brand-yellow font-bold px-3 py-2 rounded-xl border border-brand-yellow/30">Torresmo Crocante</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Macarronada</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Farofa Especial</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Polenta Cremosa</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Maionese</span>
-                                <span class="bg-brand-black px-3 py-2 rounded-xl border border-gray-800">Salada Verde & Legumes</span>
-                            </div>
-                        </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>A mozzarella de búfala é a mesma de supermercado?</span>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-
-                    <div class="px-8 pb-8">
-                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1%20Lary%20Barbaresco!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20Almo%C3%A7o%20Caipira!" target="_blank" class="w-full bg-brand-black border border-brand-yellow/40 text-white font-bold py-3.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 hover:bg-brand-accent hover:border-brand-yellow transition-all">
-                            <i data-lucide="utensils-crossed" class="w-4 h-4 text-brand-yellow"></i> Agendar Almoço Caipira com Lary
-                        </a>
+                    <div class="accordion-content">
+                        <p><strong>MITO.</strong> A verdadeira é feita só com leite de búfala, tendo textura e sabor únicos. A comum é de leite de vaca.</p>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Rural Tourism & Farm Structure Section com Fotos Unsplash Selecionadas -->
-    <section id="turismo" class="py-24 bg-brand-darkGray relative overflow-hidden border-t border-b border-brand-yellow/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Details -->
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 text-brand-yellow text-xs font-bold uppercase tracking-wider">
-                        Experiência Única para Toda a Família
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white logo-font leading-tight">
-                        Passeios de Búfala & Estrutura Completa
-                    </h2>
-                    <p class="text-gray-300 text-base leading-relaxed">
-                        Proporcione um dia inesquecível para seus amigos e família! Além do contato direto com os animais e do famoso <strong>passeio de búfala no recinto</strong>, oferecemos conforto total em um ambiente seguro e acolhedor.
-                    </p>
-
-                    <!-- Structure Highlights Grid -->
-                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
-                        <div class="p-4 rounded-2xl bg-brand-black/80 border border-brand-yellow/20 space-y-2">
-                            <div class="flex items-center gap-2 text-brand-yellow font-bold text-sm">
-                                <i data-lucide="smile" class="w-5 h-5"></i> Passeios no Recinto
-                            </div>
-                            <p class="text-xs text-gray-400">Passeio de búfala no recinto com acompanhamento e segurança para crianças e adultos.</p>
-                        </div>
-
-                        <div class="p-4 rounded-2xl bg-brand-black/80 border border-brand-yellow/20 space-y-2">
-                            <div class="flex items-center gap-2 text-brand-yellow font-bold text-sm">
-                                <i data-lucide="car" class="w-5 h-5"></i> Estacionamento Amplo
-                            </div>
-                            <p class="text-xs text-gray-400">Espaço espaçoso e seguro para estacionar carros e vans confortavelmente.</p>
-                        </div>
-
-                        <div class="p-4 rounded-2xl bg-brand-black/80 border border-brand-yellow/20 space-y-2">
-                            <div class="flex items-center gap-2 text-brand-yellow font-bold text-sm">
-                                <i data-lucide="sparkles" class="w-5 h-5"></i> Banheiros Higienizados
-                            </div>
-                            <p class="text-xs text-gray-400">Instalações limpas, higienizadas constantemente e preparadas para você.</p>
-                        </div>
-
-                        <div class="p-4 rounded-2xl bg-brand-black/80 border border-brand-yellow/20 space-y-2">
-                            <div class="flex items-center gap-2 text-brand-yellow font-bold text-sm">
-                                <i data-lucide="beer" class="w-5 h-5"></i> Bebidas Geladas & Sucos
-                            </div>
-                            <p class="text-xs text-gray-400">Cervejas trincando de geladas, refrigerantes variados e sucos naturais da fruta.</p>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 flex flex-wrap items-center gap-4">
-                        <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm bg-emerald-500/10 px-4 py-2 rounded-xl border border-emerald-500/20">
-                            <i data-lucide="heart-handshake" class="w-4 h-4"></i> Atendimento Personalizado
-                        </div>
-                        <span class="text-xs text-gray-400">Equipe Lary Barbaresco pronta para acolher sua família com carinho.</span>
-                    </div>
-                </div>
-
-                <!-- Right Visual Gallery Grid com Imagens HD da Unsplash -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    <!-- Foto 1: Búfalas de perto na fazenda -->
-                    <img src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=600&q=80" alt="Búfala no recinto da fazenda" class="rounded-2xl object-cover h-56 w-full border border-brand-yellow/20 shadow-lg hover:scale-105 transition-transform duration-300">
-                    
-                    <!-- Foto 2: Comida Caipira deliciosa -->
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Carne de leitoa no tacho caipira" class="rounded-2xl object-cover h-56 w-full border border-brand-yellow/20 shadow-lg mt-6 hover:scale-105 transition-transform duration-300">
-                    
-                    <!-- Foto 3: Cervejas e Sucos gelados -->
-                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=600&q=80" alt="Cervejas e bebidas trincando de geladas" class="rounded-2xl object-cover h-48 w-full border border-brand-yellow/20 shadow-lg -mt-6 hover:scale-105 transition-transform duration-300">
-                    
-                    <!-- Foto 4: Paisagem Rural da Fazenda -->
-                    <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80" alt="Área verde e paisagem rural Búfalas São João" class="rounded-2xl object-cover h-48 w-full border border-brand-yellow/20 shadow-lg hover:scale-105 transition-transform duration-300">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Cheese Products Section com Imagens Reais de Queijos de Búfala do Unsplash -->
-    <section id="produtos" class="py-24 bg-brand-black relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">100% Leite de Búfala Puro</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold text-white logo-font">Nossos Queijos Artesanais</h3>
-                <div class="w-24 h-1 bg-brand-yellow mx-auto mt-4 rounded-full"></div>
-                <p class="text-gray-400 mt-4 text-sm sm:text-base">
-                    Peça até a noite anterior e receba na entrega semanal em Assis, Cândido Mota e Paraguaçu Paulista.
-                </p>
-            </div>
-
-            <!-- Category Filter Tabs -->
-            <div class="flex justify-center flex-wrap gap-2 mb-12" id="filter-tabs">
-                <button onclick="filterProducts('todos')" class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-yellow text-brand-black shadow-md transition-all">Todos</button>
-                <button onclick="filterProducts('frescos')" class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-darkGray text-gray-300 hover:text-brand-yellow transition-all">Frescos & Leves</button>
-                <button onclick="filterProducts('especiais')" class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-darkGray text-gray-300 hover:text-brand-yellow transition-all">Especiais & Burratas</button>
-                <button onclick="filterProducts('culinaria')" class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-darkGray text-gray-300 hover:text-brand-yellow transition-all">Para Culinária</button>
-            </div>
-
-            <!-- Product Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
-                <!-- Products dynamically rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Map & Location Section (Como Chegar) -->
-    <section id="localizacao" class="py-24 bg-brand-darkGray relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">Venha nos Visitar</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold text-white logo-font">Como Chegar na Fazenda</h3>
-                <div class="w-24 h-1 bg-brand-yellow mx-auto mt-4 rounded-full"></div>
-                <p class="text-gray-400 mt-4 text-sm sm:text-base">
-                    Localização fácil e acessível para toda a região de Assis, Cândido Mota e Paraguaçu Paulista.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-12 gap-8 items-center bg-brand-black rounded-3xl p-6 sm:p-8 border border-brand-yellow/20 shadow-2xl">
-                
-                <!-- Map Info & Buttons -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-yellow text-brand-black flex items-center justify-center font-bold shadow-lg">
-                            <i data-lucide="map-pin" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold text-white logo-font">Búfalas São João</h4>
-                            <p class="text-xs text-brand-yellow font-semibold">Turismo Rural & Queijos Artesanais</p>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4 text-sm text-gray-300">
-                        <div class="p-4 rounded-xl bg-brand-darkGray border border-gray-800 space-y-1">
-                            <span class="text-xs font-bold text-brand-yellow uppercase tracking-wider block">Coordenadas Geográficas GPS</span>
-                            <p class="font-mono text-white text-sm">-22.413900, -50.614201</p>
-                        </div>
-
-                        <div class="flex items-start gap-3">
-                            <i data-lucide="car" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <div>
-                                <strong class="text-white block">Estacionamento Gratuito Amplo:</strong>
-                                <p class="text-xs text-gray-400">Espaço confortável para carros, caminhonetes e ônibus de excursão.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3">
-                            <i data-lucide="user-check" class="w-5 h-5 text-brand-yellow shrink-0 mt-0.5"></i>
-                            <div>
-                                <strong class="text-white block">Atendimento com Lary Barbaresco:</strong>
-                                <p class="text-xs text-gray-400">Dúvidas sobre reservas do café, almoço ou entregas? Fale diretamente no WhatsApp.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Location Action Buttons -->
-                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
-                        <a href="https://maps.google.com/?q=-22.413900,-50.614201" target="_blank" class="yellow-gradient text-brand-black font-bold px-6 py-3.5 rounded-xl hover:shadow-lg hover:shadow-brand-yellow/20 hover:scale-105 transition-all text-sm flex items-center justify-center gap-2">
-                            <i data-lucide="navigation" class="w-4 h-4"></i> Abrir no Google Maps
-                        </a>
-                        <a href="https://waze.com/ul?ll=-22.413900,-50.614201&navigate=yes" target="_blank" class="bg-brand-darkGray border border-brand-yellow/30 text-white font-semibold px-6 py-3.5 rounded-xl hover:border-brand-yellow transition-all text-sm flex items-center justify-center gap-2">
-                            <i data-lucide="compass" class="w-4 h-4 text-brand-yellow"></i> Abrir no Waze
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Embedded Interactive Map Iframe -->
-                <div class="lg:col-span-7 h-[380px] sm:h-[420px] rounded-2xl overflow-hidden border border-brand-yellow/30 shadow-inner relative">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.8951234567!2d-50.614201!3d-22.413900!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDI0JzUwLjAiUyA1MMKwMzYnNTE1LjEiVw!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0; filter: grayscale(20%) contrast(110%);" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                    <div class="absolute top-4 left-4 bg-brand-black/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-brand-yellow/30 text-xs font-bold text-white flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Búfalas São João (-22.413900, -50.614201)
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Orders Section -->
-    <section id="contato" class="py-20 bg-brand-black relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-brand-darkGray via-brand-black to-brand-darkGray p-8 sm:p-12 rounded-3xl border border-brand-yellow/30 shadow-2xl">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    
-                    <div>
-                        <span class="text-xs font-bold text-brand-yellow uppercase tracking-widest">Atendimento Comercial & Reservas</span>
-                        <h3 class="text-3xl font-extrabold text-white logo-font mt-2 mb-4">Fale Conosco no WhatsApp</h3>
-                        <p class="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed">
-                            Faça seu pedido de queijos até a noite anterior para a entrega semanal ou agende a visita da sua família para o Café Rural e Almoço Caipira.
-                        </p>
-
-                        <div class="space-y-4">
-                            <div class="p-4 rounded-2xl bg-brand-black/80 border border-brand-yellow/20 flex items-center justify-between gap-4">
-                                <div class="flex items-center gap-3.5">
-                                    <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
-                                        <i data-lucide="message-circle" class="w-5 h-5"></i>
-                                    </div>
-                                    <div>
-                                        <span class="block text-xs text-gray-400 font-medium">Atendimento Direto</span>
-                                        <h4 class="text-base font-bold text-white">Lary Barbaresco</h4>
-                                        <span class="text-sm font-semibold text-brand-yellow">+55 (18) 99643-8262</span>
-                                    </div>
-                                </div>
-                                <a href="https://wa.me/5518996438262?text=Ol%C3%A1%20Lary%20Barbaresco,%20gostaria%20de%20fazer%20um%20pedido%20ou%20agendar!" target="_blank" class="yellow-gradient text-brand-black font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:scale-105 transition-all shrink-0">
-                                    <i data-lucide="send" class="w-3.5 h-3.5"></i> Mensagem
-                                </a>
-                            </div>
-
-                            <div class="p-4 rounded-xl bg-brand-darkGray text-xs text-gray-300 space-y-1 border border-gray-800">
-                                <span class="text-brand-yellow font-bold block">Cidades Atendidas nas Entregas Semanais:</span>
-                                <p>• Assis | • Cândido Mota | • Paraguaçu Paulista (Período da Tarde)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-darkGray p-6 sm:p-8 rounded-2xl border border-brand-yellow/20">
-                        <h4 class="text-xl font-bold text-white mb-4">Envie seu pedido ou dúvida</h4>
-                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-medium text-gray-400 mb-1">Seu Nome</label>
-                                <input type="text" required placeholder="Ex: Maria Silva" class="w-full bg-brand-black border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-gray-400 mb-1">Cidade</label>
-                                <select class="w-full bg-brand-black border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
-                                    <option value="Assis">Assis</option>
-                                    <option value="Cândido Mota">Cândido Mota</option>
-                                    <option value="Paraguaçu Paulista">Paraguaçu Paulista</option>
-                                    <option value="Outra Cidade / Visita à Fazenda">Outra Cidade / Visita à Fazenda</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-gray-400 mb-1">Mensagem ou Pedido</label>
-                                <textarea rows="3" required placeholder="Gostaria de encomendar queijos ou saber sobre o café rural..." class="w-full bg-brand-black border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow"></textarea>
-                            </div>
-                            <button type="submit" class="w-full yellow-gradient text-brand-black font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-brand-yellow/20 transition-all text-sm flex items-center justify-center gap-2">
-                                <i data-lucide="send" class="w-4 h-4"></i> Enviar Mensagem via WhatsApp
-                            </button>
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-brand-black border-t border-brand-yellow/20 py-12 text-gray-400 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-yellow rounded-lg p-1 flex items-center justify-center">
-                        <svg viewBox="0 0 100 80" class="w-full h-full fill-brand-black">
-                            <path d="M10,20 C25,10 40,25 50,45 C60,25 75,10 90,20 C80,35 60,40 50,55 C40,40 20,35 10,20 Z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="block text-base font-bold logo-font text-brand-yellow">BÚFALAS SÃO JOÃO</span>
-                        <span class="block text-[10px] text-gray-500 uppercase tracking-widest">Queijos Artesanais & Turismo Rural ®</span>
-                    </div>
-                </div>
-
-                <div class="text-center text-xs text-gray-400">
-                    <p class="font-semibold text-gray-300">Contato & Pedidos: Lary Barbaresco (+55 18 99643-8262)</p>
-                    <p class="text-gray-500 mt-1">Entregas 1x por semana em Assis, Cândido Mota e Paraguaçu Paulista.</p>
-                </div>
-
-                <div class="flex space-x-4">
-                    <a href="https://maps.google.com/?q=-22.413900,-50.614201" target="_blank" class="p-2 rounded-full bg-brand-darkGray text-gray-400 hover:text-brand-yellow transition-colors" title="Google Maps">
-                        <i data-lucide="map-pin" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://wa.me/5518996438262" target="_blank" class="p-2 rounded-full bg-brand-darkGray text-gray-400 hover:text-brand-yellow transition-colors" title="WhatsApp Lary Barbaresco">
-                        <i data-lucide="message-square" class="w-5 h-5"></i>
-                    </a>
-                </div>
-
+    <!-- CONTATO -->
+    <section id="contato" class="secao fundo-alt">
+        <div class="container grid-duplo">
+            <ul class="contato-info">
+                <li><i class="fas fa-map-marker-alt"></i> <div>Sítio São João, Bairro Água do Sapé - Paraguaçu Paulista/SP</div></li>
+                <li><i class="fas fa-phone-alt"></i> <div>(18) 99643-8262 (Lary)<br>(18) 99623-2661 (Juliano)</div></li>
+                <li><i class="fab fa-instagram"></i> <div>@bufalasaojoao</div></li>
+            </ul>
+            <div class="mapa">
+                <iframe src="https://maps.google.com/maps?q=-22.413900,-50.614201&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Búfalas São João. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Shopping Cart Modal Slide-over -->
-    <div id="cart-modal" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
-
-        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div class="w-screen max-w-md bg-brand-darkGray text-white shadow-2xl border-l border-brand-yellow/20 flex flex-col">
-                
-                <!-- Cart Header -->
-                <div class="p-6 border-b border-gray-800 flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-yellow"></i>
-                        <h3 class="text-lg font-bold logo-font">Seu Pedido de Queijos</h3>
-                    </div>
-                    <button onclick="toggleCart()" class="p-1 rounded-lg text-gray-400 hover:text-white">
-                        <i data-lucide="x" class="w-6 h-6"></i>
-                    </button>
-                </div>
-
-                <!-- Cart Items List -->
-                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cart-items">
-                    <div class="text-center py-12 text-gray-400" id="empty-cart-msg">
-                        <i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-3 text-gray-600"></i>
-                        <p>Seu carrinho está vazio.</p>
-                        <p class="text-xs text-gray-500 mt-1">Adicione deliciosos queijos artesanais!</p>
-                    </div>
-                </div>
-
-                <!-- Cart Footer -->
-                <div class="p-6 border-t border-gray-800 bg-brand-black space-y-4">
-                    <div class="flex justify-between text-base font-bold">
-                        <span>Total Estimado:</span>
-                        <span id="cart-total" class="text-brand-yellow">R$ 0,00</span>
-                    </div>
-                    <p class="text-xs text-gray-400">
-                        Entregas 1x por semana à tarde para Assis, Cândido Mota e Paraguaçu Paulista. Pedidos aceitos até a noite anterior.
-                    </p>
-                    <button onclick="sendCartToWhatsApp()" class="w-full yellow-gradient text-brand-black font-bold py-3.5 rounded-xl hover:shadow-lg hover:shadow-brand-yellow/20 transition-all text-sm flex items-center justify-center gap-2">
-                        <i data-lucide="message-circle" class="w-5 h-5"></i> Enviar Pedido para Lary Barbaresco
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-brand-yellow text-brand-black px-5 py-3 rounded-xl font-bold shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3">
-        <i data-lucide="check-circle" class="w-5 h-5"></i>
-        <span id="toast-message">Item adicionado com sucesso!</span>
-    </div>
-
-    <!-- JavaScript Data & Logic -->
+    <!-- JAVASCRIPT (Lógica do Carrinho e WhatsApp) -->
     <script>
-        // Products Dataset com Fotos Reais Unsplash em Alta Definição
-        const products = [
-            {
-                id: 1,
-                name: "Mozzarella de Búfala em Bola",
-                category: "frescos",
-                price: 28.90,
-                weight: "250g",
-                description: "Clássica bola de mozzarella fresca mantida no soro puro. Textura macia, elástica e incrivelmente cremosa.",
-                image: "https://images.unsplash.com/photo-1592417817098-8f3d6ef23a28?auto=format&fit=crop&w=600&q=80",
-                badge: "Mais Vendido"
-            },
-            {
-                id: 2,
-                name: "Burrata Artesanal Tradicional",
-                category: "especiais",
-                price: 36.00,
-                weight: "200g",
-                description: "Bolsa fina de mozzarella recheada com stracciatella cremosa e creme de leite fresco de búfala.",
-                image: "https://images.unsplash.com/photo-1626957341926-98752fc2ba90?auto=format&fit=crop&w=600&q=80",
-                badge: "Gourmet"
-            },
-            {
-                id: 3,
-                name: "Queijo Frescal de Búfala",
-                category: "frescos",
-                price: 26.50,
-                weight: "350g",
-                description: "Leve, suave e com teor reduzido de sal. Ideal para um café da manhã leve, saudável e proteico.",
-                image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=600&q=80",
-                badge: "Saudável"
-            },
-            {
-                id: 4,
-                name: "Mozzarella em Barra",
-                category: "culinaria",
-                price: 49.00,
-                weight: "500g",
-                description: "Perfeita para fatiar e derreter em pizzas, sanduíches e assados. Derretimento uniforme e cor dourada.",
-                image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=600&q=80",
-                badge: "Culinária"
-            },
-            {
-                id: 5,
-                name: "Ricota Fresca de Búfala",
-                category: "frescos",
-                price: 22.00,
-                weight: "300g",
-                description: "Massa aveludada obtida do soro puro do leite de búfala. Perfeita para recheios, patês ou pastas doces.",
-                image: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=600&q=80",
-                badge: "Proteico"
-            },
-            {
-                id: 6,
-                name: "Bocconcini de Búfala (Cerejinha)",
-                category: "especiais",
-                price: 31.00,
-                weight: "250g",
-                description: "Pequenas bolinhas de mozzarella frescas em soro. Ideais para saladas Caprese, espetinhos e petiscos.",
-                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
-                badge: "Aperitivo"
-            }
+        const produtos = [
+            { id: 1, nome: "Queijo Fresco", preco: 35.00, img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=600&auto=format&fit=crop", desc: "Macio e leve." },
+            { id: 2, nome: "Mozzarella", preco: 45.00, img: "https://images.unsplash.com/photo-1621263764624-3a3b1f3f6a1a?q=80&w=600&auto=format&fit=crop", desc: "Elástica e saborosa." },
+            { id: 3, nome: "Burrata", preco: 50.00, img: "https://images.unsplash.com/photo-1625938145744-e380515bfd1f?q=80&w=600&auto=format&fit=crop", desc: "Cremosa e deliciosa." },
+            { id: 4, nome: "Parmesão", preco: 55.00, img: "https://images.unsplash.com/photo-1589881133595-3f5f2b2c9a0a?q=80&w=600&auto=format&fit=crop", desc: "Curado e intenso." },
+            { id: 5, nome: "Doce de Leite", preco: 25.00, img: "https://images.unsplash.com/photo-1625938145744-e380515bfd1f?q=80&w=600&auto=format&fit=crop", desc: "Cremoso e irresistível." },
+            { id: 6, nome: "Iogurte Natural", preco: 15.00, img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=600&auto=format&fit=crop", desc: "Saudável e leve." }
         ];
 
-        let cart = [];
+        let carrinho = [];
 
-        // Render Products
-        function renderProducts(items) {
-            const container = document.getElementById('product-grid');
-            container.innerHTML = items.map(p => `
-                <div class="bg-brand-darkGray rounded-2xl overflow-hidden border border-brand-yellow/20 card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                            ${p.badge ? `<span class="absolute top-3 right-3 bg-brand-yellow text-brand-black text-[11px] font-extrabold uppercase px-3 py-1 rounded-full shadow-md">${p.badge}</span>` : ''}
-                            <span class="absolute bottom-3 left-3 bg-brand-black/80 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-md border border-brand-yellow/20">${p.weight}</span>
+        // Renderizar Produtos
+        function renderizarProdutos() {
+            const grid = document.getElementById('grid-produtos');
+            grid.innerHTML = '';
+            produtos.forEach(prod => {
+                grid.innerHTML += `
+                    <article class="card-produto">
+                        <img src="${prod.img}" alt="${prod.nome}" class="img-produto">
+                        <div class="info-produto">
+                            <h3>${prod.nome}</h3>
+                            <p>${prod.desc}</p>
+                            <div class="preco">R$ ${prod.preco.toFixed(2).replace('.', ',')}</div>
+                            <!-- Botão de WhatsApp que chama a função de adicionar -->
+                            <button class="btn btn-whatsapp" onclick="adicionarAoCarrinho(${prod.id})">
+                                <i class="fab fa-whatsapp"></i> Pedir
+                            </button>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-white mb-2 logo-font">${p.name}</h3>
-                            <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 mb-4 leading-relaxed">${p.description}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="px-6 pb-6 pt-2 border-t border-gray-800/80 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-gray-400 block">Preço</span>
-                            <span class="text-xl font-extrabold text-brand-yellow">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
-                        </div>
-                        <button onclick="addToCart(${p.id})" class="yellow-gradient text-brand-black font-bold p-3 rounded-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 shadow-md">
-                            <i data-lucide="plus" class="w-5 h-5"></i>
-                            <span class="text-xs uppercase font-extrabold hidden sm:inline">Adicionar</span>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        // Filter Functionality
-        function filterProducts(category) {
-            const buttons = document.querySelectorAll('#filter-tabs button');
-            buttons.forEach(btn => {
-                btn.className = 'px-5 py-2 rounded-full text-sm font-semibold bg-brand-darkGray text-gray-300 hover:text-brand-yellow transition-all';
+                    </article>
+                `;
             });
-            event.target.className = 'px-5 py-2 rounded-full text-sm font-semibold bg-brand-yellow text-brand-black shadow-md transition-all';
-
-            if (category === 'todos') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
         }
 
-        // Cart Actions
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
-
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
+        // Adicionar Item
+        function adicionarAoCarrinho(id) {
+            const produto = produtos.find(p => p.id === id);
+            const item = carrinho.find(i => i.id === id);
+            
+            if (item) { 
+                item.quantidade += 1; 
+            } else { 
+                carrinho.push({ ...produto, quantidade: 1 }); 
             }
-
-            updateCartUI();
-            showToast(`"${product.name}" adicionado!`);
+            
+            atualizarCarrinho();
+            abrirCarrinho(); // Abre a gaveta automaticamente
         }
 
-        function updateCartQuantity(productId, change) {
-            const item = cart.find(i => i.id === productId);
+        // Alterar Quantidade na Gaveta
+        function alterarQtd(id, delta) {
+            const item = carrinho.find(i => i.id === id);
             if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) {
-                    cart = cart.filter(i => i.id !== productId);
+                item.quantidade += delta;
+                if (item.quantidade <= 0) {
+                    removerDoCarrinho(id);
+                } else {
+                    atualizarCarrinho();
                 }
             }
-            updateCartUI();
         }
 
-        function updateCartUI() {
-            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-
-            // Update Counts
-            document.getElementById('cart-count').innerText = totalItems;
-            document.getElementById('cart-count').style.opacity = totalItems > 0 ? '1' : '0';
-            document.getElementById('cart-count-mobile').innerText = totalItems;
-            document.getElementById('cart-count-mobile').style.opacity = totalItems > 0 ? '1' : '0';
-
-            // Render Cart Items
-            const cartItemsContainer = document.getElementById('cart-items');
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="text-center py-12 text-gray-400" id="empty-cart-msg">
-                        <i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-3 text-gray-600"></i>
-                        <p>Seu carrinho está vazio.</p>
-                        <p class="text-xs text-gray-500 mt-1">Adicione deliciosos queijos artesanais!</p>
-                    </div>
-                `;
-            } else {
-                cartItemsContainer.innerHTML = cart.map(item => `
-                    <div class="flex items-center justify-between bg-brand-black p-3.5 rounded-xl border border-gray-800">
-                        <div class="flex items-center gap-3">
-                            <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover">
-                            <div>
-                                <h4 class="text-xs font-bold text-white">${item.name}</h4>
-                                <span class="text-xs text-brand-yellow font-bold">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 bg-brand-darkGray rounded-lg px-2 py-1">
-                            <button onclick="updateCartQuantity(${item.id}, -1)" class="text-gray-400 hover:text-white font-bold px-1.5">-</button>
-                            <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
-                            <button onclick="updateCartQuantity(${item.id}, 1)" class="text-gray-400 hover:text-white font-bold px-1.5">+</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            document.getElementById('cart-total').innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-            lucide.createIcons();
+        // Remover Item
+        function removerDoCarrinho(id) {
+            carrinho = carrinho.filter(i => i.id !== id);
+            atualizarCarrinho();
         }
 
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('hidden');
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-message').innerText = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
+        // Atualizar Interface do Carrinho (Calculando Tudo)
+        function atualizarCarrinho() {
+            const lista = document.getElementById('lista-carrinho');
+            const contador = document.getElementById('contador-carrinho');
+            const subtotalSpan = document.getElementById('subtotal-carrinho');
+            const totalSpan = document.getElementById('total-carrinho');
+            const freteInput = parseFloat(document.getElementById('frete').value) || 0;
             
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
+            let subtotal = 0;
+            let qtdTotal = 0;
+            lista.innerHTML = '';
 
-        function sendCartToWhatsApp() {
-            if (cart.length === 0) {
-                showToast("Adicione produtos antes de finalizar!");
-                return;
+            if (carrinho.length === 0) {
+                lista.innerHTML = '<p style="text-align:center; color:#888; margin-top:40px;">Nenhum item adicionado.</p>';
+            } else {
+                carrinho.forEach(item => {
+                    subtotal += item.preco * item.quantidade;
+                    qtdTotal += item.quantidade;
+                    lista.innerHTML += `
+                        <div class="item-carrinho">
+                            <div class="item-info">
+                                <h4>${item.nome}</h4>
+                                <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</p>
+                                <div class="controles-qtd">
+                                    <button class="btn-qtd" onclick="alterarQtd(${item.id}, -1)">-</button>
+                                    <span>${item.quantidade}</span>
+                                    <button class="btn-qtd" onclick="alterarQtd(${item.id}, 1)">+</button>
+                                </div>
+                            </div>
+                            <button class="btn-remover" onclick="removerDoCarrinho(${item.id})"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    `;
+                });
             }
 
-            let text = "Olá, Lary Barbaresco! Gostaria de encomendar para a entrega semanal:\n\n";
-            cart.forEach(item => {
-                text += `• *${item.quantity}x ${item.name}* (${item.weight}) - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+            contador.innerText = qtdTotal;
+            subtotalSpan.innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            totalSpan.innerText = `R$ ${(subtotal + freteInput).toFixed(2).replace('.', ',')}`;
+        }
+
+        // Abrir/Fechar Gaveta
+        function toggleCarrinho() {
+            const sidebar = document.getElementById('sidebar-carrinho');
+            const overlay = document.querySelector('.overlay-carrinho');
+            const aberto = sidebar.classList.contains('aberto');
+            
+            if (aberto) {
+                sidebar.classList.remove('aberto');
+                overlay.style.display = 'none';
+                setTimeout(() => overlay.style.opacity = '0', 300);
+            } else {
+                sidebar.classList.add('aberto');
+                overlay.style.display = 'block';
+                setTimeout(() => overlay.style.opacity = '1', 10);
+            }
+        }
+
+        function abrirCarrinho() {
+            document.getElementById('sidebar-carrinho').classList.add('aberto');
+            const overlay = document.querySelector('.overlay-carrinho');
+            overlay.style.display = 'block';
+            setTimeout(() => overlay.style.opacity = '1', 10);
+        }
+
+        // Finalizar Pedido com Cálculo Completo
+        document.getElementById('form-finalizar').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (carrinho.length === 0) { 
+                alert("Adicione pelo menos um produto para fazer o pedido."); 
+                return; 
+            }
+
+            // Pegar dados do formulário
+            const nome = document.getElementById('nome').value;
+            const cidade = document.getElementById('cidade').value;
+            const bairro = document.getElementById('bairro').value;
+            const endereco = document.getElementById('endereco').value;
+            const pagamento = document.getElementById('pagamento').value;
+            const frete = parseFloat(document.getElementById('frete').value) || 0;
+
+            // Calcular valores
+            let subtotal = 0;
+            let itensMensagem = "";
+
+            carrinho.forEach(item => {
+                const subItem = item.preco * item.quantidade;
+                subtotal += subItem;
+                itensMensagem += `- ${item.quantidade}x ${item.nome} (R$ ${subItem.toFixed(2).replace('.', ',')})%0A`;
             });
 
-            const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-            text += `\n*Total Estimado:* R$ ${total.toFixed(2).replace('.', ',')}\n\n*Cidade de Entrega:* (Assis / Cândido Mota / Paraguaçu Paulista)`;
+            const total = subtotal + frete;
 
-            const encodedText = encodeURIComponent(text);
-            window.open(`https://wa.me/5518996438262?text=${encodedText}`, '_blank');
-        }
+            // Montar mensagem final
+            let mensagem = `Olá! Gostaria de confirmar meu pedido:%0A%0A`;
+            mensagem += `*--- DADOS DO CLIENTE ---*%0A`;
+            mensagem += `*Nome:* ${nome}%0A`;
+            mensagem += `*Cidade:* ${cidade}%0A`;
+            mensagem += `*Bairro:* ${bairro}%0A`;
+            mensagem += `*Endereço:* ${endereco}%0A`;
+            mensagem += `*Pagamento:* ${pagamento}%0A%0A`;
+            
+            mensagem += `*--- ITENS DO PEDIDO ---*%0A`;
+            mensagem += itensMensagem;
+            
+            mensagem += `%0A*--- RESUMO FINANCEIRO ---*%0A`;
+            mensagem += `*Subtotal:* R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
+            mensagem += `*Frete:* R$ ${frete.toFixed(2).replace('.', ',')}%0A`;
+            mensagem += `*TOTAL A PAGAR:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const name = form.querySelectorAll('input')[0].value;
-            const city = form.querySelector('select').value;
-            const msg = form.querySelector('textarea').value;
-
-            const text = `Olá Lary Barbaresco! Meu nome é ${name} de ${city}.\nMensagem: ${msg}`;
-            window.open(`https://wa.me/5518996438262?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        // Mobile Menu Functions
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            // Abrir WhatsApp
+            window.open(`https://wa.me/5518996438262?text=${mensagem}`, '_blank');
         });
 
-        function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
+        // Lógica do Accordion
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const ativo = item.classList.contains('ativo');
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('ativo'));
+            if (!ativo) item.classList.add('ativo');
         }
 
-        // Initialize Icons & First Render
-        window.onload = function() {
-            lucide.createIcons();
-            renderProducts(products);
-        }
+        // Inicialização
+        renderizarProdutos();
+        atualizarCarrinho();
     </script>
 </body>
 </html>
