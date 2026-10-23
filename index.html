@@ -5,233 +5,278 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Búfalas São João | Queijos Artesanais e Turismo Rural</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Botão Flutuante Geral do WhatsApp -->
-    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido.%20Meu%20nome%20%C3%A9:%20" target="_blank" class="whatsapp-flutuante" title="Fale conosco pelo WhatsApp">
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido.%20Meu%20nome%20%C3%A9:%20" target="_blank" class="whatsapp-float" title="Fale conosco pelo WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Cabeçalho com o Logo Enviado -->
-    <header>
-        <div class="logo-container">
-            <!-- A imagem enviada é o logo amarelo, ela será exibida aqui -->
-            <img src="logo.png" alt="Logo Búfalas São João" class="logo">
+    <!-- Cabeçalho -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo-container">
+                <!-- AQUI VAI O SEU LOGO. Certifique-se de que a imagem esteja na pasta com o nome logo.png -->
+                <img src="logo.png" alt="Logo Búfalas São João" class="logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#queijos">Queijos</a></li>
+                    <li><a href="#loja">Loja</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#produtos">Queijos</a></li>
-                <li><a href="#loja">Loja & Entregas</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
     </header>
 
     <!-- Capa Principal (Hero) -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>O verdadeiro sabor da Mantiqueira Paulista</h1>
-            <p>Queijos artesanais, turismo rural e momentos inesquecíveis em família.</p>
-            <a href="#loja" class="btn btn-principal">Faça seu Pedido</a>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>O Verdadeiro Sabor da Mantiqueira</h1>
+            <p>Queijos artesanais feitos com 100% leite de búfala A2A2, direto do nosso sítio para a sua mesa.</p>
+            <a href="#loja" class="btn btn-principal">Ver Produtos e Pedir</a>
         </div>
     </section>
 
-    <!-- Sobre -->
-    <section id="sobre" class="container section-padding">
-        <div class="sobre-grid">
+    <!-- Seção Sobre -->
+    <section id="sobre" class="section-padding bg-palha">
+        <div class="container sobre-grid">
             <div class="sobre-texto">
                 <h2>Nossa História</h2>
-                <p>Em Paraguaçu Paulista, a <strong>Búfalas São João</strong> é um verdadeiro exemplo de paixão e propósito. Fundada em 2016, nasceu da experiência pessoal de sua proprietária, que descobriu no leite de búfala A2A2 uma alternativa saudável e nutritiva — e transformou essa descoberta em um negócio familiar de sucesso.</p>
-                <p>Hoje, a propriedade produz <strong>36 produtos artesanais</strong>, entre queijos, iogurtes e doces, todos feitos com leite das búfalas criadas no próprio sítio.</p>
+                <p>Em Paraguaçu Paulista, a <strong>Búfalas São João</strong> é um verdadeiro exemplo de paixão e propósito. Fundada em 2016, nasceu da descoberta do leite de búfala A2A2 como uma alternativa saudável e nutritiva, transformando-se em um negócio familiar de sucesso.</p>
+                <p>Hoje, produzimos <strong>36 produtos artesanais</strong>, entre queijos, iogurtes e doces, todos feitos com leite das búfalas criadas no próprio sítio.</p>
                 <div class="premios">
-                    <i class="fas fa-trophy"></i> <span>Queijo Frescal e Iogurte Premiados</span>
+                    <i class="fas fa-trophy"></i> 
+                    <span>Queijo Frescal e Iogurte Premiados</span>
                 </div>
             </div>
             <div class="sobre-imagem">
-                <img src="queijo-fresco.jpg" alt="Queijo Fresco Búfalas São João">
+                <!-- Se tiver uma foto da fazenda ou do queijo, coloque o nome aqui (ex: fazenda.jpg) -->
+                <div class="imagem-placeholder">
+                    <i class="fas fa-camera"></i>
+                    <span>Foto da Fazenda/Queijos</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Produtos Principais (Queijos) com Fotos -->
-    <section id="produtos" class="bg-palha section-padding">
+    <!-- Seção Queijos -->
+    <section id="queijos" class="section-padding">
         <div class="container">
-            <h2 class="text-center">Nossos Queijos Artesanais</h2>
-            <p class="text-center subtitle">Produzidos com 100% leite de búfala A2A2, sem conservantes.</p>
+            <h2 class="text-center titulo-secao">Nossos Queijos Artesanais</h2>
+            <p class="text-center subtitulo">Produzidos com leite 100% de búfala A2A2, sem conservantes.</p>
             
-            <div class="produtos-grid">
-                <!-- Queijo Fresco -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=400&q=80" alt="Queijo Fresco" class="produto-img">
-                    <h3>Queijo Fresco</h3>
-                    <p>Macio e leve, perfeito para o café da manhã.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Queijo%20Fresco.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+            <div class="grid-produtos">
+                <!-- Produto 1 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-cheese"></i></div>
+                    <div class="card-info">
+                        <h3>Queijo Fresco</h3>
+                        <p>Macio e leve, perfeito para o café da manhã.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Queijo%20Fresco.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Mozzarella -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1621263764624-3a3b1f3f6a1a?auto=format&fit=crop&w=400&q=80" alt="Mozzarella" class="produto-img">
-                    <h3>Mozzarella</h3>
-                    <p>Elástica e saborosa, ideal para pizzas e saladas.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Mozzarella.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 2 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-pizza-slice"></i></div>
+                    <div class="card-info">
+                        <h3>Mozzarella</h3>
+                        <p>Elástica e saborosa, ideal para pizzas e saladas.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Mozzarella.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Coalho -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1552767059-ce182ead6c1b?auto=format&fit=crop&w=400&q=80" alt="Coalho" class="produto-img">
-                    <h3>Coalho / Coalhada Síria</h3>
-                    <p>Textura firme e sabor marcante.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Coalho/Coalhada.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 3 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-cubes"></i></div>
+                    <div class="card-info">
+                        <h3>Coalho / Coalhada</h3>
+                        <p>Textura firme e sabor marcante.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Coalho/Coalhada.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Ricota -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&w=400&q=80" alt="Ricota" class="produto-img">
-                    <h3>Ricota</h3>
-                    <p>Leveza e cremosidade para suas receitas.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Ricota.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 4 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-leaf"></i></div>
+                    <div class="card-info">
+                        <h3>Ricota</h3>
+                        <p>Leveza e cremosidade para suas receitas.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Ricota.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Parmesão -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1589881133595-3f5f2b2c9a0a?auto=format&fit=crop&w=400&q=80" alt="Parmesão" class="produto-img">
-                    <h3>Parmesão</h3>
-                    <p>Curado, intenso e perfeito para ralar.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Parmes%C3%A3o.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 5 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-circle-notch"></i></div>
+                    <div class="card-info">
+                        <h3>Parmesão</h3>
+                        <p>Curado, intenso e perfeito para ralar.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Parmes%C3%A3o.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Meia Cura -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1590405622837-2b1a5f2c4b7a?auto=format&fit=crop&w=400&q=80" alt="Meia Cura" class="produto-img">
-                    <h3>Meia Cura</h3>
-                    <p>Equilíbrio perfeito entre maciez e sabor.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Meia%20Cura.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 6 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-layer-group"></i></div>
+                    <div class="card-info">
+                        <h3>Meia Cura</h3>
+                        <p>Equilíbrio perfeito entre maciez e sabor.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Meia%20Cura.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Burrata -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1625938145744-e380515bfd1f?auto=format&fit=crop&w=400&q=80" alt="Burrata" class="produto-img">
-                    <h3>Burrata</h3>
-                    <p>Cremosa por dentro, deliciosa com tomates.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Burrata.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 7 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-egg"></i></div>
+                    <div class="card-info">
+                        <h3>Burrata</h3>
+                        <p>Cremosa por dentro, deliciosa com tomates.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Burrata.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
-                <!-- Manteiga -->
-                <div class="produto-card">
-                    <img src="https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=400&q=80" alt="Manteiga" class="produto-img">
-                    <h3>Manteiga</h3>
-                    <p>Artesanal e pura, sabor inconfundível.</p>
-                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Manteiga.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                <!-- Produto 8 -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-bread-slice"></i></div>
+                    <div class="card-info">
+                        <h3>Manteiga</h3>
+                        <p>Artesanal e pura, sabor inconfundível.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Manteiga.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Loja & Entregas (Doces e Outros) com Fotos -->
-    <section id="loja" class="container section-padding">
-        <h2 class="text-center">Loja & Delícias Artesanais</h2>
-        <p class="text-center subtitle">Entregas sem pedido mínimo para Assis, Cândido Mota e Paraguaçu Paulista.</p>
-        
-        <div class="promocao-destaque">
-            <h3><i class="fas fa-tags"></i> Promoção da Semana</h3>
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pão de queijo e Manta de rúcula" class="produto-img" style="max-width: 400px; display: block; margin: 0 auto 15px;">
-            <p>1 Manta de rúcula com tomate seco (300g) + 1 Pão de queijo (300g)</p>
-            <span class="preco">R$ 34,00</span>
-            <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Promo%C3%A7%C3%A3o%20(Manta%20de%20r%C3%BAcula%20%2B%20P%C3%A3o%20de%20queijo).%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn btn-principal mt-1"><i class="fab fa-whatsapp"></i> Pedir Promoção</a>
-        </div>
+    <!-- Seção Loja e Doces (Fundo Palha) -->
+    <section id="loja" class="section-padding bg-palha">
+        <div class="container">
+            <h2 class="text-center titulo-secao">Loja & Delícias Artesanais</h2>
+            <p class="text-center subtitulo">Entregas sem pedido mínimo para Assis, Cândido Mota e Paraguaçu Paulista.</p>
+            
+            <!-- Destaque Promoção -->
+            <div class="destaque-promocao">
+                <div class="promo-content">
+                    <h3><i class="fas fa-tags"></i> Promoção da Semana</h3>
+                    <p>1 Manta de rúcula com tomate seco (300g) + 1 Pão de queijo (300g)</p>
+                    <span class="preco">R$ 34,00</span>
+                    <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Promo%C3%A7%C3%A3o%20(Manta%20de%20r%C3%BAcula%20%2B%20P%C3%A3o%20de%20queijo).%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn btn-principal"><i class="fab fa-whatsapp"></i> Pedir Promoção</a>
+                </div>
+            </div>
 
-        <h3 class="text-center mt-2" style="margin-bottom: 20px;">Outros Produtos Disponíveis</h3>
-        
-        <div class="produtos-grid">
-            <!-- Doce de Abóbora -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=400&q=80" alt="Doce de Abóbora" class="produto-img">
-                <h3>Doce de Abóbora</h3>
-                <p>Pedraço (R$ 22,00)</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Ab%C3%B3bora.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+            <h3 class="text-center subtitulo mt-4">Outros Produtos Disponíveis</h3>
+            
+            <div class="grid-produtos">
+                <!-- Doce de Abóbora -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-candy-cane"></i></div>
+                    <div class="card-info">
+                        <h3>Doce de Abóbora</h3>
+                        <p>Pedraço (R$ 22,00)</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Ab%C3%B3bora.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Doce de Mamão Ralado -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-cookie"></i></div>
+                    <div class="card-info">
+                        <h3>Doce de Mamão Ralado</h3>
+                        <p>R$ 22,00</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Mam%C3%A3o%20Ralado.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Doce de Mamão em Pedaço -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-cube"></i></div>
+                    <div class="card-info">
+                        <h3>Doce de Mamão em Pedaço</h3>
+                        <p>R$ 25,00</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Mam%C3%A3o%20em%20Peda%C3%A7o.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Goiabada Cremosa -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-cookie-bite"></i></div>
+                    <div class="card-info">
+                        <h3>Goiabada Cremosa</h3>
+                        <p>R$ 22,00</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Goiabada%20Cremosa.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Geleia de Goiaba -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-wine-bottle"></i></div>
+                    <div class="card-info">
+                        <h3>Geleia de Goiaba</h3>
+                        <p>R$ 18,00</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Geleia%20de%20Goiaba.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Mel (250ml) -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-jar"></i></div>
+                    <div class="card-info">
+                        <h3>Mel (250ml)</h3>
+                        <p>R$ 20,00</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Mel%20250ml.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Iogurtes -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-glass-whiskey"></i></div>
+                    <div class="card-info">
+                        <h3>Iogurtes</h3>
+                        <p>Consulte sabores disponíveis</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Iogurte.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
+                <!-- Doce de Leite -->
+                <div class="card-produto">
+                    <div class="img-placeholder"><i class="fas fa-tint"></i></div>
+                    <div class="card-info">
+                        <h3>Doce de Leite</h3>
+                        <p>Artesanal, cremoso e irresistível.</p>
+                        <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Leite.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+                    </div>
+                </div>
             </div>
-            <!-- Doce de Mamão Ralado -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1621263764624-3a3b1f3f6a1a?auto=format&fit=crop&w=400&q=80" alt="Doce de Mamão Ralado" class="produto-img">
-                <h3>Doce de Mamão Ralado</h3>
-                <p>R$ 22,00</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Mam%C3%A3o%20Ralado.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
+            
+            <div class="info-extra">
+                <p><i class="fas fa-truck"></i> Entregas às quintas-feiras, das 09:00 às 17:00.</p>
+                <p><i class="fas fa-credit-card"></i> Pagamento via Pix, Débito ou Crédito.</p>
             </div>
-            <!-- Doce de Mamão em Pedaço -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1552767059-ce182ead6c1b?auto=format&fit=crop&w=400&q=80" alt="Doce de Mamão em Pedaço" class="produto-img">
-                <h3>Doce de Mamão em Pedaço</h3>
-                <p>R$ 25,00</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Mam%C3%A3o%20em%20Peda%C3%A7o.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
-            </div>
-            <!-- Goiabada Cremosa -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&w=400&q=80" alt="Goiabada Cremosa" class="produto-img">
-                <h3>Goiabada Cremosa</h3>
-                <p>R$ 22,00</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Goiabada%20Cremosa.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
-            </div>
-            <!-- Geleia de Goiaba -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1589881133595-3f5f2b2c9a0a?auto=format&fit=crop&w=400&q=80" alt="Geleia de Goiaba" class="produto-img">
-                <h3>Geleia de Goiaba</h3>
-                <p>R$ 18,00</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Geleia%20de%20Goiaba.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
-            </div>
-            <!-- Mel (250ml) -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80" alt="Mel 250ml" class="produto-img">
-                <h3>Mel (250ml)</h3>
-                <p>R$ 20,00</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Mel%20250ml.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
-            </div>
-            <!-- Iogurtes -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=400&q=80" alt="Iogurtes" class="produto-img">
-                <h3>Iogurtes</h3>
-                <p>Consulte sabores disponíveis</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Iogurte.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
-            </div>
-            <!-- Doce de Leite -->
-            <div class="produto-card">
-                <img src="https://images.unsplash.com/photo-1625938145744-e380515bfd1f?auto=format&fit=crop&w=400&q=80" alt="Doce de Leite" class="produto-img">
-                <h3>Doce de Leite</h3>
-                <p>Artesanal, cremoso e irresistível.</p>
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Doce%20de%20Leite.%0A%0AMeu%20nome%20%C3%A9:%20%0AQuantidade:%20%0AEndere%C3%A7o%20para%20entrega:%20%0ACidade:%20" target="_blank" class="btn-whatsapp-card"><i class="fab fa-whatsapp"></i> Pedir</a>
-            </div>
-        </div>
-        
-        <div class="info-entrega text-center mt-2">
-            <p><i class="fas fa-truck"></i> Entregas às quintas-feiras, das 09:00 às 17:00.</p>
-            <p><i class="fas fa-credit-card"></i> Pagamento via Pix, Débito ou Crédito.</p>
         </div>
     </section>
 
-    <!-- Contato -->
-    <section id="contato" class="bg-amarelo section-padding">
+    <!-- Seção Contato (Fundo Amarelo) -->
+    <section id="contato" class="section-padding bg-amarelo">
         <div class="container contato-grid">
             <div class="contato-info">
                 <h2>Venha nos Visitar</h2>
-                <p>
-                    <i class="fas fa-map-marker-alt"></i> 
-                    <a href="https://maps.google.com/?q=-22.413900,-50.614201" target="_blank" style="text-decoration: underline; color: inherit;">
-                        Sítio São João, Bairro Água do Sapé – Paraguaçu Paulista/SP
-                    </a>
-                </p>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.google.com/?q=-22.413900,-50.614201" target="_blank">Sítio São João, Bairro Água do Sapé – Paraguaçu Paulista/SP</a></p>
                 <p><i class="fas fa-phone"></i> (18) 99643-8262 (Lary) | (18) 99623-2661 (Juliano)</p>
                 <p><i class="fas fa-envelope"></i> bufalasaojoao@gmail.com</p>
                 <p><i class="fab fa-instagram"></i> @bufalasaojoao</p>
                 
-                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20equipe.%20Meu%20nome%20%C3%A9:%20" target="_blank" class="btn btn-whatsapp mt-1"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
+                <a href="https://wa.me/5518996438262?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20equipe.%20Meu%20nome%20%C3%A9:%20" target="_blank" class="btn btn-dark mt-2"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
             </div>
             
             <div class="mapa">
-                <iframe src="https://maps.google.com/maps?q=-22.413900,-50.614201&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://maps.google.com/maps?q=-22.413900,-50.614201&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2024 Búfalas São João. Todos os direitos reservados.</p>
-        <p>www.bufalassaojoao.com.br</p>
+        <div class="container text-center">
+            <p>&copy; 2024 Búfalas São João. Todos os direitos reservados.</p>
+            <p>www.bufalassaojoao.com.br</p>
+        </div>
     </footer>
 
 </body>
